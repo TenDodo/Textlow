@@ -1,0 +1,11 @@
+C:\Users\1arka\source\repos\Textlow\Textlow\bin\Debug\Textlow.exe.config
+C:\Users\1arka\source\repos\Textlow\Textlow\bin\Debug\Textlow.exe
+C:\Users\1arka\source\repos\Textlow\Textlow\bin\Debug\Textlow.pdb
+C:\Users\1arka\source\repos\Textlow\Textlow\obj\Debug\Textlow.csprojAssemblyReference.cache
+C:\Users\1arka\source\repos\Textlow\Textlow\obj\Debug\Textlow.MainWindow.resources
+C:\Users\1arka\source\repos\Textlow\Textlow\obj\Debug\Textlow.Properties.Resources.resources
+C:\Users\1arka\source\repos\Textlow\Textlow\obj\Debug\Textlow.csproj.GenerateResource.cache
+C:\Users\1arka\source\repos\Textlow\Textlow\obj\Debug\Textlow.csproj.CoreCompileInputs.cache
+C:\Users\1arka\source\repos\Textlow\Textlow\obj\Debug\Textlow.exe
+C:\Users\1arka\source\repos\Textlow\Textlow\obj\Debug\Textlow.pdb
+C:\Users\1arka\source\repos\Textlow\Textlow\obj\Debug\Textlow.info.resources
