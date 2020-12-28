@@ -177,24 +177,103 @@ namespace Textlow
         {
             richTextBox1.Paste();
         }
-
+        #region Formaty Plików
         string txt = "Dokumenty tekstowe (*.txt)|*.txt";
         string tl = "|Textlow (*.tl)|*.tl";
         string html = "|html (*.html)|*.html";
         string css = "|css (*.css)|*.css";
         string rtf = "|RTF (*.rtf)|*.rtf";
+        string bat = "|Batch file (*.bat)|*.bat";
+        string sh = "|Unix script file (*.sh)|*.sh";
+        string fas = "|Flash ActionScript file (*.as)|*.as";
+        string ada = "|Ada file (*.ada)|*.ada";
+        string asm = "|Assembly language source file (*.asm)|*.asm";
+        string mib = "|Abstract Syntax Notation One file (*.mib)|*.mib";
+        string asp = "|Active Server Pages script file (*.asp)|*.asp";
+        string au3 = "|AutoIt (*.au3)|*.au3";
+        string avs = "|AviSynth scripts files (*.avs)|*.avs";
+        string bc = "|BaanC file (*.bc)|*.bc";
+        string bb = "|BlitzBasic file (*.bb)|*.bb";
+        string bf = "|BrainFuck (*.bf)|*.bf";
+        string c = "|C source file (*.c)|*.c";
+        string ml = "|Categorical Abstract Machine Language (*.ml)|*.ml";
+        string cmake = "|CMake file (*.cmake)|*.cmake";
+        string cbl = "|Common Business Oriented Language (*.cbl)|*.cbl";
+        string orc = "|Csound file (*.orc)|*.orc";
+        string coffee = "|CoffeeScript file (*.coffee)|*.coffee";
+        string cpp = "|C++ source file (*.cpp)|*.cpp";
+        string cs = "|C# cource code (*.cs)|*.cs";
+        string d = "|D programming language (*.d)|*.d";
+        string diff = "|Diff file (*.patch)|*.patch";
+        string erl = "|Erlang file (*.erl)|*.erl";
+        string src = "|ESCRIPT file (*.src)|*.src";
+        string forth = "|Forth file (*.forth)|*.forth";
+        string f = "|Fortran free form source file (*.f)|*.f";
+        string f77 = "|Fortran fixed form source file (*.f77)|*.f77";
+        string bi = "|FreeBasic file (*.bi)|*.bi";
+        string hs = "|Haskell (*.hs)|*.hs";
+        string ini = "|MS ini file (*.ini)|*.ini";
+        string iss = "|Inno Setup script (*.iss)|*.iss";
+        string hex = "|Intel HEX binary data (*.hex)|*.hex";
+        string java = "|Java source file (*.java)|*.java";
+        string js = "|JavaScript (*.js)|*.js";
+        string json = "|JSON file (*.json)|*.json";
+        string jsp = "|JavaServer Pages script file (*.jsp)|*.jsp";
+        string kix = "|KiXtart file (*.kix)|*.kix";
+        string lsp = "|List Processing language file (*.lsp)|*.lsp";
+        string tex = "|LaTeX file (*.tex)|*.tex";
+        string lua = "|Lua source File (*.lua)|*.lua";
+        string mak = "|Makefile (*.mak)|*.mak";
+        string m = "|MATrix LABoratory (*.m)|*.m";
+        string mms = "|MMIXAL file (*.mms)|*.mms";
+        string nim = "|Nimrod file (*.nim)|*.nim";
+        string tab = "|extended crontab file (*.tab)|*.tab";
+        string nfo = "|MSDOS Style/ASCII Art (*.nfo)|*.nfo";
+        string nsh = "|Nullsoft Scriptable install System script file (*.nsh)|*.nsh";
+        string osx = "|OScript source file (*.osx)|*.osx";
+        string mm = "|Objective-C source file (*.mm)|*.mm";
+        string pp = "|Pascal source file (*.pp)|*.pp";
+        string pl = "|Perl source file (*.pl)|*.pl";
+        string php = "|PHP Hypertext Preprocessor file (*.php)|*.php";
+        string ps = "|PostScript file (*.ps)|*.ps";
+        string ps1 = "|Windows PowerShell (*.ps1)|*.ps1";
+        string properties = "|Properties file (*.properties)|*.properties";
+        string pb = "|PureBasic file (*.pb)|*.pb";
+        string py = "|Python file (*.py)|*.py";
+        string r = "|R programming language (*.r)|*.r";
+        string reb = "|REBOL file (*.reb)|*.reb";
+        string reg = "|registry file (*.reg)|*.reg";
+        string rc = "|Windows Resource file (*.rc)|*.rc";
+        string rb = "|Ruby file (*.rb)|*.rb";
+        string rs = "|Rust file (*.rs)|*.rs";
+        string scm = "|Scheme file (*.scm)|*.scm";
+        string st = "|SmalTalk file (*.st)|*.st";
+        string scp = "|spice file (*.scp)|*.scp";
+        string sql = "|Structured Query Language file (*.sql)|*.sql";
+        string mot = "|Motorola S-Record binary data (*.mot)|*.mot";
+        string swift = "|Swift file (*.swift)|*.swift";
+        string tcl = "|Tool Command Language file (*.tcl)|*.tcl";
+        string tek = "|Tektronix extended HEX binary data (*.tek)|*.tek";
+        string vb = "|Visual Basic file (*.vb)|*.vb";
+        string t2t = "|txt2tags file (*.t2t)|*.t2t";
+        string v = "|Verilog file (*.v)|*.v";
+        string vhd = "|VHSIC Hardware Description Language file (*.vhd)|*.vhd";
+        string pro = "|Visual Prolog file (*.pro)|*.pro";
+        string xml = "|eXtensible Markup Language file (*.xml)|*.xml";
+        string yaml = "|YAML Ain't Markup Language (*.yaml)|*.yaml";
         string all = "|All files (*.*)|*.*";
+        #endregion
         private void saveAs(string textToSave)
         {
 
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.Title = "Zapisz plik jako:";
-            saveFile.Filter = txt + tl + html + css + rtf + all;
+            saveFile.Filter = txt + tl + all + html + css + js + json + rtf + bat + sh + fas + ada + asm + mib + asp + au3 + avs + bc + bb + bf + c + ml + cmake + cbl + orc + coffee + cpp + cs + d + diff + erl + src + forth + f + f77 + bi + hs + ini + iss + hex + java + jsp + kix + lsp + tex + lua + mak + m + mms + nim + tab + nfo + nsh + osx + mm + pp + pl + php + ps + ps1 + properties + pb + py + r + reb + reg + rc + rb + rs + scm + st + scp + sql + mot + swift + tcl + tek + vb + t2t + v + vhd + pro + xml + yaml;
             if (saveFile.ShowDialog() == DialogResult.OK)
-            {           
-                    StreamWriter textoutput = new StreamWriter(saveFile.FileName);
-                    textoutput.Write(textToSave);
-                    textoutput.Close();
+            {
+                StreamWriter textoutput = new StreamWriter(saveFile.FileName);
+                textoutput.Write(textToSave);
+                textoutput.Close();
             }
         }
         private void openFile()
@@ -270,6 +349,7 @@ namespace Textlow
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             #region Secrets
+
             if (richTextBox1.Text == "crazyfrog" || richTextBox1.Text == "crazy frog")
             {
                 System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=kGGoeDrjL5g");
@@ -535,7 +615,7 @@ namespace Textlow
                     if (customCeasarKey > 25 || customCeasarKey < 1)
                     {
                         MessageBox.Show("Wartość z poza dozwolonego przedziału, szyfrowanie może nie działać poprawnie.");
-                        
+
                     }
                     string textToDecipher;
                     OpenFileDialog openFile = new OpenFileDialog();
@@ -878,6 +958,217 @@ namespace Textlow
             }
 
 
+        }
+        public string BFinterpreter(string input)
+        {
+            string output = "";
+            byte[] tape;
+            int pointer = 0;
+            char[] chinput;
+            chinput = input.ToCharArray();
+            tape = new byte[30000];
+            var unmatchedBracketCounter = 0;
+            for (int i = 0; i < input.Length; i++)
+            {
+                switch (input[i])
+                {
+                    case '>':
+                        pointer++;
+                        break;
+                    case '<':
+                        pointer--;
+                        break;
+                    case '+':
+                        tape[pointer]++;
+                        break;
+                    case '-':
+                        tape[pointer]--;
+                        break;
+                    case '.':
+                        output += Convert.ToChar(tape[pointer]);
+                        break;
+                    case ',':
+                        output += " ";
+                        break;
+                    case '[':
+                        if (tape[pointer] == 0)
+                        {
+                            unmatchedBracketCounter++;
+                            while (input[i] != ']' || unmatchedBracketCounter != 0)
+                            {
+                                i++;
+
+                                if (input[i] == '[')
+                                {
+                                    unmatchedBracketCounter++;
+                                }
+                                else if (input[i] == ']')
+                                {
+                                    unmatchedBracketCounter--;
+                                }
+                            }
+                        }
+                        break;
+                    case ']':
+                        if (tape[pointer] != 0)
+                        {
+                            unmatchedBracketCounter++;
+                            while (input[i] != '[' || unmatchedBracketCounter != 0)
+                            {
+                                i--;
+
+                                if (input[i] == ']')
+                                {
+                                    unmatchedBracketCounter++;
+                                }
+                                else if (input[i] == '[')
+                                {
+                                    unmatchedBracketCounter--;
+                                }
+                            }
+                        }
+                        break;
+                }
+            }
+            return output;
+
+        }
+
+
+        private void brainFuckToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = BFinterpreter(richTextBox1.Text);
+
+        }
+
+        private void brainFuckToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            string brfToS;
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Title = "Wybierz plik do otwarcia:";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+
+                using (StreamReader sr = new StreamReader(openFile.FileName))
+                {
+                    brfToS = sr.ReadToEnd();
+
+                    richTextBox1.Clear();
+                    richTextBox1.Text = BFinterpreter(brfToS);
+
+
+                    sr.Close();
+                }
+            }
+        }
+
+        private void brainFuckToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            bool isAscii = true;
+            foreach (char c in richTextBox1.Text)
+            {
+                if (c > 127)
+                {
+                    isAscii = false;
+                }
+            }
+            if (isAscii)
+            {
+                richTextBox1.Text = strToBf(richTextBox1.Text);
+            }
+            else
+            {
+
+                MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na BrainFuck.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+            }
+            
+        }
+        public static string strToBf(string input)
+        {
+            string s = "++++++++++" + "[";
+            string t = "";
+            string s2 = "";
+            string s3 = "";
+            foreach (char ch in input)
+            {
+                int i_ord = (int)ch;
+                int i_cdc = cdc((int)ch);
+                int i_max = 256 - i_ord;
+                string s1 = "";
+                string t1 = "";
+
+                if (i_max < 128)
+                {
+                    for (int i = 0; i < i_max; i++)
+                    {
+                        s1 += '-';
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < i_cdc / 10; i++)
+                    {
+                        s1 += '+';
+                    }
+                }
+                s += '>' + s1;
+                if (i_ord - i_cdc > 0)
+                {
+                    for (int i = 0; i < Math.Abs(i_ord - i_cdc); i++)
+                    {
+                        t1 += '+';
+                    }
+
+                }
+                else
+                {
+                    for (int i = 0; i < Math.Abs(i_ord - i_cdc); i++)
+                    {
+                        t1 += '-';
+                    }
+                }
+                t += '>' + t1;
+            }
+            for (int i = 0; i < input.Length; i++)
+            {
+                s2 += '<';
+            }
+            for (int i = 0; i < input.Length - 1; i++)
+            {
+                s3 += '<';
+            }
+            s += s2 + "-]" + t + s3 + "[.>]";
+            return s;
+        }
+        public static int cdc(int i)
+        {
+            int t = i % 10;
+            if (t > 5)
+            {
+                i += 10;
+            }
+            return i - t;
+        }
+
+        private void brainFuckToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            bool isAscii = true;
+            foreach (char c in richTextBox1.Text)
+            {
+                if (c > 127)
+                {
+                    isAscii = false;
+                }
+            }
+            if (isAscii)
+            {
+                saveAs(strToBf(richTextBox1.Text));
+            }
+            else
+            {
+
+                MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na BrainFuck.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+            }
         }
     }
 }
