@@ -34,8 +34,17 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dopiszTekstZPlikuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.otworzZaszyfrowanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.szyfrCezaraToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.binariaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.saveasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zapiszJakoZaszyfrowanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.szyfrCezaraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.binariaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -53,9 +62,11 @@
             this.textlowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.klasycznyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.klasycznyCiemnyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.draculaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -68,25 +79,26 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.zapiszJakoZaszyfrowanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.szyfrCezaraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.otworzZaszyfrowanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.szyfrCezaraToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.dopiszTekstZPlikuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.toolStripSplitButton2 = new System.Windows.Forms.ToolStripSplitButton();
+            this.szyfrCezaraToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.binariaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.szyfrCezaraToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.binariaToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -142,6 +154,46 @@
             this.openToolStripMenuItem.Text = "&Otwórz";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
+            // dopiszTekstZPlikuToolStripMenuItem
+            // 
+            this.dopiszTekstZPlikuToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("dopiszTekstZPlikuToolStripMenuItem.Image")));
+            this.dopiszTekstZPlikuToolStripMenuItem.Name = "dopiszTekstZPlikuToolStripMenuItem";
+            this.dopiszTekstZPlikuToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.dopiszTekstZPlikuToolStripMenuItem.Text = "Dopisz tekst z pliku";
+            this.dopiszTekstZPlikuToolStripMenuItem.Click += new System.EventHandler(this.dopiszTekstZPlikuToolStripMenuItem_Click);
+            // 
+            // otworzZaszyfrowanyToolStripMenuItem
+            // 
+            this.otworzZaszyfrowanyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.szyfrCezaraToolStripMenuItem1,
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem1,
+            this.binariaToolStripMenuItem1});
+            this.otworzZaszyfrowanyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("otworzZaszyfrowanyToolStripMenuItem.Image")));
+            this.otworzZaszyfrowanyToolStripMenuItem.Name = "otworzZaszyfrowanyToolStripMenuItem";
+            this.otworzZaszyfrowanyToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.otworzZaszyfrowanyToolStripMenuItem.Text = "Otwórz zaszyfrowany";
+            // 
+            // szyfrCezaraToolStripMenuItem1
+            // 
+            this.szyfrCezaraToolStripMenuItem1.Name = "szyfrCezaraToolStripMenuItem1";
+            this.szyfrCezaraToolStripMenuItem1.Size = new System.Drawing.Size(242, 22);
+            this.szyfrCezaraToolStripMenuItem1.Text = "Szyfr Cezara";
+            this.szyfrCezaraToolStripMenuItem1.Click += new System.EventHandler(this.szyfrCezaraToolStripMenuItem1_Click);
+            // 
+            // szyfrCezaraZWlasnymKluczemToolStripMenuItem1
+            // 
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem1.Name = "szyfrCezaraZWlasnymKluczemToolStripMenuItem1";
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem1.Size = new System.Drawing.Size(242, 22);
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem1.Text = "Szyfr Cezara z własnym kluczem";
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem1.Click += new System.EventHandler(this.szyfrCezaraZWlasnymKluczemToolStripMenuItem1_Click);
+            // 
+            // binariaToolStripMenuItem1
+            // 
+            this.binariaToolStripMenuItem1.Name = "binariaToolStripMenuItem1";
+            this.binariaToolStripMenuItem1.Size = new System.Drawing.Size(242, 22);
+            this.binariaToolStripMenuItem1.Text = "Binaria";
+            this.binariaToolStripMenuItem1.Click += new System.EventHandler(this.binariaToolStripMenuItem1_Click);
+            // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
@@ -155,6 +207,38 @@
             this.saveasToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.saveasToolStripMenuItem.Text = "&Zapisz jako";
             this.saveasToolStripMenuItem.Click += new System.EventHandler(this.saveasToolStripMenuItem_Click);
+            // 
+            // zapiszJakoZaszyfrowanyToolStripMenuItem
+            // 
+            this.zapiszJakoZaszyfrowanyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.szyfrCezaraToolStripMenuItem,
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem,
+            this.binariaToolStripMenuItem});
+            this.zapiszJakoZaszyfrowanyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("zapiszJakoZaszyfrowanyToolStripMenuItem.Image")));
+            this.zapiszJakoZaszyfrowanyToolStripMenuItem.Name = "zapiszJakoZaszyfrowanyToolStripMenuItem";
+            this.zapiszJakoZaszyfrowanyToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.zapiszJakoZaszyfrowanyToolStripMenuItem.Text = "Zapisz jako zaszyfrowany";
+            // 
+            // szyfrCezaraToolStripMenuItem
+            // 
+            this.szyfrCezaraToolStripMenuItem.Name = "szyfrCezaraToolStripMenuItem";
+            this.szyfrCezaraToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.szyfrCezaraToolStripMenuItem.Text = "Szyfr Cezara";
+            this.szyfrCezaraToolStripMenuItem.Click += new System.EventHandler(this.szyfrCezaraToolStripMenuItem_Click);
+            // 
+            // szyfrCezaraZWlasnymKluczemToolStripMenuItem
+            // 
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem.Name = "szyfrCezaraZWlasnymKluczemToolStripMenuItem";
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem.Text = "Szyfr Cezara z własnym kluczem";
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem.Click += new System.EventHandler(this.szyfrCezaraZWlasnymKluczemToolStripMenuItem_Click);
+            // 
+            // binariaToolStripMenuItem
+            // 
+            this.binariaToolStripMenuItem.Name = "binariaToolStripMenuItem";
+            this.binariaToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.binariaToolStripMenuItem.Text = "Binaria";
+            this.binariaToolStripMenuItem.Click += new System.EventHandler(this.binariaToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -271,7 +355,8 @@
             this.motywAplikacjiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.textlowToolStripMenuItem,
             this.klasycznyToolStripMenuItem,
-            this.klasycznyCiemnyToolStripMenuItem});
+            this.klasycznyCiemnyToolStripMenuItem,
+            this.draculaToolStripMenuItem});
             this.motywAplikacjiToolStripMenuItem.Name = "motywAplikacjiToolStripMenuItem";
             this.motywAplikacjiToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
             this.motywAplikacjiToolStripMenuItem.Text = "Motyw Aplikacji";
@@ -299,6 +384,13 @@
             this.klasycznyCiemnyToolStripMenuItem.Text = "Klasyczny ciemny";
             this.klasycznyCiemnyToolStripMenuItem.Click += new System.EventHandler(this.klasycznyCiemnyToolStripMenuItem_Click);
             // 
+            // draculaToolStripMenuItem
+            // 
+            this.draculaToolStripMenuItem.Name = "draculaToolStripMenuItem";
+            this.draculaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.draculaToolStripMenuItem.Text = "Dracula";
+            this.draculaToolStripMenuItem.Click += new System.EventHandler(this.draculaToolStripMenuItem_Click);
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -317,7 +409,12 @@
             this.toolStripButton2,
             this.toolStripSeparator5,
             this.helpToolStripButton,
-            this.toolStripSplitButton1});
+            this.toolStripButton6,
+            this.toolStripSeparator8,
+            this.toolStripButton5,
+            this.toolStripSeparator9,
+            this.toolStripSplitButton1,
+            this.toolStripSplitButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(977, 25);
@@ -343,6 +440,16 @@
             this.openToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.openToolStripButton.Text = "&Otwórz";
             this.openToolStripButton.Click += new System.EventHandler(this.openToolStripButton_Click);
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton4.Text = "Dopisz tekst z pliku";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // saveToolStripButton
             // 
@@ -450,48 +557,30 @@
             this.helpToolStripButton.Text = "&Pomoc";
             this.helpToolStripButton.Click += new System.EventHandler(this.helpToolStripButton_Click);
             // 
-            // toolStripSplitButton1
+            // toolStripButton6
             // 
-            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.toolStripTextBox1});
-            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
-            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(29, 22);
-            this.toolStripSplitButton1.Text = "9";
-            this.toolStripSplitButton1.ButtonClick += new System.EventHandler(this.toolStripSplitButton1_ButtonClick);
+            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
+            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton6.Text = "Zmień czcionkę";
+            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
-            // toolStripMenuItem1
+            // toolStripSeparator8
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(160, 22);
-            this.toolStripMenuItem1.Text = "9";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripMenuItem2
+            // toolStripButton5
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(160, 22);
-            this.toolStripMenuItem2.Text = "12";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(160, 22);
-            this.toolStripMenuItem3.Text = "16";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
-            // 
-            // toolStripTextBox1
-            // 
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
-            this.toolStripTextBox1.LostFocus += new System.EventHandler(this.toolStripTextBox1_Leave);
+            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton5.Text = "Przeczytaj na głos";
+            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
             // richTextBox1
             // 
@@ -526,72 +615,6 @@
             this.timer1.Interval = 25;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // zapiszJakoZaszyfrowanyToolStripMenuItem
-            // 
-            this.zapiszJakoZaszyfrowanyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.szyfrCezaraToolStripMenuItem,
-            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem});
-            this.zapiszJakoZaszyfrowanyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("zapiszJakoZaszyfrowanyToolStripMenuItem.Image")));
-            this.zapiszJakoZaszyfrowanyToolStripMenuItem.Name = "zapiszJakoZaszyfrowanyToolStripMenuItem";
-            this.zapiszJakoZaszyfrowanyToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.zapiszJakoZaszyfrowanyToolStripMenuItem.Text = "Zapisz jako zaszyfrowany";
-            // 
-            // szyfrCezaraToolStripMenuItem
-            // 
-            this.szyfrCezaraToolStripMenuItem.Name = "szyfrCezaraToolStripMenuItem";
-            this.szyfrCezaraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.szyfrCezaraToolStripMenuItem.Text = "Szyfr Cezara";
-            this.szyfrCezaraToolStripMenuItem.Click += new System.EventHandler(this.szyfrCezaraToolStripMenuItem_Click);
-            // 
-            // otworzZaszyfrowanyToolStripMenuItem
-            // 
-            this.otworzZaszyfrowanyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.szyfrCezaraToolStripMenuItem1,
-            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem1});
-            this.otworzZaszyfrowanyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("otworzZaszyfrowanyToolStripMenuItem.Image")));
-            this.otworzZaszyfrowanyToolStripMenuItem.Name = "otworzZaszyfrowanyToolStripMenuItem";
-            this.otworzZaszyfrowanyToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.otworzZaszyfrowanyToolStripMenuItem.Text = "Otwórz zaszyfrowany";
-            // 
-            // szyfrCezaraToolStripMenuItem1
-            // 
-            this.szyfrCezaraToolStripMenuItem1.Name = "szyfrCezaraToolStripMenuItem1";
-            this.szyfrCezaraToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.szyfrCezaraToolStripMenuItem1.Text = "Szyfr Cezara";
-            this.szyfrCezaraToolStripMenuItem1.Click += new System.EventHandler(this.szyfrCezaraToolStripMenuItem1_Click);
-            // 
-            // szyfrCezaraZWlasnymKluczemToolStripMenuItem
-            // 
-            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem.Name = "szyfrCezaraZWlasnymKluczemToolStripMenuItem";
-            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem.Text = "Szyfr Cezara z własnym kluczem";
-            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem.Click += new System.EventHandler(this.szyfrCezaraZWlasnymKluczemToolStripMenuItem_Click);
-            // 
-            // szyfrCezaraZWlasnymKluczemToolStripMenuItem1
-            // 
-            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem1.Name = "szyfrCezaraZWlasnymKluczemToolStripMenuItem1";
-            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem1.Size = new System.Drawing.Size(242, 22);
-            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem1.Text = "Szyfr Cezara z własnym kluczem";
-            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem1.Click += new System.EventHandler(this.szyfrCezaraZWlasnymKluczemToolStripMenuItem1_Click);
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "Dopisz tekst z pliku";
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
-            // 
-            // dopiszTekstZPlikuToolStripMenuItem
-            // 
-            this.dopiszTekstZPlikuToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("dopiszTekstZPlikuToolStripMenuItem.Image")));
-            this.dopiszTekstZPlikuToolStripMenuItem.Name = "dopiszTekstZPlikuToolStripMenuItem";
-            this.dopiszTekstZPlikuToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.dopiszTekstZPlikuToolStripMenuItem.Text = "Dopisz tekst z pliku";
-            this.dopiszTekstZPlikuToolStripMenuItem.Click += new System.EventHandler(this.dopiszTekstZPlikuToolStripMenuItem_Click);
-            // 
             // printDocument1
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
@@ -603,9 +626,82 @@
             this.printPreviewDialog1.ClientSize = new System.Drawing.Size(600, 800);
             this.printPreviewDialog1.Document = this.printDocument1;
             this.printPreviewDialog1.Enabled = true;
-            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon"))); 
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSplitButton1
+            // 
+            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.szyfrCezaraToolStripMenuItem2,
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem2,
+            this.binariaToolStripMenuItem2});
+            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
+            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 22);
+            this.toolStripSplitButton1.Text = "Zaszyfruj tutaj";
+            // 
+            // toolStripSplitButton2
+            // 
+            this.toolStripSplitButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSplitButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.szyfrCezaraToolStripMenuItem3,
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem3,
+            this.binariaToolStripMenuItem3});
+            this.toolStripSplitButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton2.Image")));
+            this.toolStripSplitButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton2.Name = "toolStripSplitButton2";
+            this.toolStripSplitButton2.Size = new System.Drawing.Size(32, 22);
+            this.toolStripSplitButton2.Text = "Odszyfruj tutaj";
+            // 
+            // szyfrCezaraToolStripMenuItem2
+            // 
+            this.szyfrCezaraToolStripMenuItem2.Name = "szyfrCezaraToolStripMenuItem2";
+            this.szyfrCezaraToolStripMenuItem2.Size = new System.Drawing.Size(242, 22);
+            this.szyfrCezaraToolStripMenuItem2.Text = "Szyfr Cezara";
+            this.szyfrCezaraToolStripMenuItem2.Click += new System.EventHandler(this.szyfrCezaraToolStripMenuItem2_Click);
+            // 
+            // szyfrCezaraZWlasnymKluczemToolStripMenuItem2
+            // 
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem2.Name = "szyfrCezaraZWlasnymKluczemToolStripMenuItem2";
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem2.Size = new System.Drawing.Size(242, 22);
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem2.Text = "Szyfr Cezara z własnym kluczem";
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem2.Click += new System.EventHandler(this.szyfrCezaraZWlasnymKluczemToolStripMenuItem2_Click);
+            // 
+            // binariaToolStripMenuItem2
+            // 
+            this.binariaToolStripMenuItem2.Name = "binariaToolStripMenuItem2";
+            this.binariaToolStripMenuItem2.Size = new System.Drawing.Size(242, 22);
+            this.binariaToolStripMenuItem2.Text = "Binaria";
+            this.binariaToolStripMenuItem2.Click += new System.EventHandler(this.binariaToolStripMenuItem2_Click);
+            // 
+            // szyfrCezaraToolStripMenuItem3
+            // 
+            this.szyfrCezaraToolStripMenuItem3.Name = "szyfrCezaraToolStripMenuItem3";
+            this.szyfrCezaraToolStripMenuItem3.Size = new System.Drawing.Size(242, 22);
+            this.szyfrCezaraToolStripMenuItem3.Text = "Szyfr Cezara";
+            this.szyfrCezaraToolStripMenuItem3.Click += new System.EventHandler(this.szyfrCezaraToolStripMenuItem3_Click);
+            // 
+            // szyfrCezaraZWlasnymKluczemToolStripMenuItem3
+            // 
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem3.Name = "szyfrCezaraZWlasnymKluczemToolStripMenuItem3";
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem3.Size = new System.Drawing.Size(242, 22);
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem3.Text = "Szyfr Cezara z własnym kluczem";
+            this.szyfrCezaraZWlasnymKluczemToolStripMenuItem3.Click += new System.EventHandler(this.szyfrCezaraZWlasnymKluczemToolStripMenuItem3_Click);
+            // 
+            // binariaToolStripMenuItem3
+            // 
+            this.binariaToolStripMenuItem3.Name = "binariaToolStripMenuItem3";
+            this.binariaToolStripMenuItem3.Size = new System.Drawing.Size(242, 22);
+            this.binariaToolStripMenuItem3.Text = "Binaria";
+            this.binariaToolStripMenuItem3.Click += new System.EventHandler(this.binariaToolStripMenuItem3_Click);
             // 
             // MainWindow
             // 
@@ -620,6 +716,8 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainWindow";
             this.Text = "Textlow";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -675,11 +773,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem zapiszJakoZaszyfrowanyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem szyfrCezaraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem otworzZaszyfrowanyToolStripMenuItem;
@@ -690,6 +783,23 @@
         private System.Windows.Forms.ToolStripMenuItem dopiszTekstZPlikuToolStripMenuItem;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.FontDialog fontDialog1;
+        private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.ToolStripMenuItem binariaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem binariaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem draculaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
+        private System.Windows.Forms.ToolStripMenuItem szyfrCezaraToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem szyfrCezaraZWlasnymKluczemToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem binariaToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton2;
+        private System.Windows.Forms.ToolStripMenuItem szyfrCezaraToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem szyfrCezaraZWlasnymKluczemToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem binariaToolStripMenuItem3;
     }
 }
 
