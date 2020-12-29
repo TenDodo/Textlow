@@ -40,12 +40,15 @@
             this.szyfrCezaraZWlasnymKluczemToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.binariaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.brainFuckToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tripleDESToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.saveasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zapiszJakoZaszyfrowanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.szyfrCezaraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.szyfrCezaraZWlasnymKluczemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.binariaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.brainFuckToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tripleDESToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -88,11 +91,14 @@
             this.szyfrCezaraToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.szyfrCezaraZWlasnymKluczemToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.binariaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.brainFuckToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tripleDESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSplitButton2 = new System.Windows.Forms.ToolStripSplitButton();
             this.szyfrCezaraToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.szyfrCezaraZWlasnymKluczemToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.binariaToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.brainFuckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tripleDESToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -101,8 +107,6 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.brainFuckToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.brainFuckToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -172,7 +176,8 @@
             this.szyfrCezaraToolStripMenuItem1,
             this.szyfrCezaraZWlasnymKluczemToolStripMenuItem1,
             this.binariaToolStripMenuItem1,
-            this.brainFuckToolStripMenuItem1});
+            this.brainFuckToolStripMenuItem1,
+            this.tripleDESToolStripMenuItem2});
             this.otworzZaszyfrowanyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("otworzZaszyfrowanyToolStripMenuItem.Image")));
             this.otworzZaszyfrowanyToolStripMenuItem.Name = "otworzZaszyfrowanyToolStripMenuItem";
             this.otworzZaszyfrowanyToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
@@ -206,6 +211,13 @@
             this.brainFuckToolStripMenuItem1.Text = "BrainFuck";
             this.brainFuckToolStripMenuItem1.Click += new System.EventHandler(this.brainFuckToolStripMenuItem1_Click);
             // 
+            // tripleDESToolStripMenuItem2
+            // 
+            this.tripleDESToolStripMenuItem2.Name = "tripleDESToolStripMenuItem2";
+            this.tripleDESToolStripMenuItem2.Size = new System.Drawing.Size(242, 22);
+            this.tripleDESToolStripMenuItem2.Text = "TripleDES";
+            this.tripleDESToolStripMenuItem2.Click += new System.EventHandler(this.tripleDESToolStripMenuItem2_Click);
+            // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
@@ -226,7 +238,8 @@
             this.szyfrCezaraToolStripMenuItem,
             this.szyfrCezaraZWlasnymKluczemToolStripMenuItem,
             this.binariaToolStripMenuItem,
-            this.brainFuckToolStripMenuItem3});
+            this.brainFuckToolStripMenuItem3,
+            this.tripleDESToolStripMenuItem3});
             this.zapiszJakoZaszyfrowanyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("zapiszJakoZaszyfrowanyToolStripMenuItem.Image")));
             this.zapiszJakoZaszyfrowanyToolStripMenuItem.Name = "zapiszJakoZaszyfrowanyToolStripMenuItem";
             this.zapiszJakoZaszyfrowanyToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
@@ -252,6 +265,20 @@
             this.binariaToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.binariaToolStripMenuItem.Text = "Binaria";
             this.binariaToolStripMenuItem.Click += new System.EventHandler(this.binariaToolStripMenuItem_Click);
+            // 
+            // brainFuckToolStripMenuItem3
+            // 
+            this.brainFuckToolStripMenuItem3.Name = "brainFuckToolStripMenuItem3";
+            this.brainFuckToolStripMenuItem3.Size = new System.Drawing.Size(242, 22);
+            this.brainFuckToolStripMenuItem3.Text = "BrainFuck";
+            this.brainFuckToolStripMenuItem3.Click += new System.EventHandler(this.brainFuckToolStripMenuItem3_Click);
+            // 
+            // tripleDESToolStripMenuItem3
+            // 
+            this.tripleDESToolStripMenuItem3.Name = "tripleDESToolStripMenuItem3";
+            this.tripleDESToolStripMenuItem3.Size = new System.Drawing.Size(242, 22);
+            this.tripleDESToolStripMenuItem3.Text = "TripleDES";
+            this.tripleDESToolStripMenuItem3.Click += new System.EventHandler(this.tripleDESToolStripMenuItem3_Click);
             // 
             // toolStripSeparator1
             // 
@@ -379,28 +406,28 @@
             this.textlowToolStripMenuItem.Checked = true;
             this.textlowToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.textlowToolStripMenuItem.Name = "textlowToolStripMenuItem";
-            this.textlowToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.textlowToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.textlowToolStripMenuItem.Text = "Textlow";
             this.textlowToolStripMenuItem.Click += new System.EventHandler(this.textlowToolStripMenuItem_Click);
             // 
             // klasycznyToolStripMenuItem
             // 
             this.klasycznyToolStripMenuItem.Name = "klasycznyToolStripMenuItem";
-            this.klasycznyToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.klasycznyToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.klasycznyToolStripMenuItem.Text = "Klasyczny";
             this.klasycznyToolStripMenuItem.Click += new System.EventHandler(this.klasycznyToolStripMenuItem_Click);
             // 
             // klasycznyCiemnyToolStripMenuItem
             // 
             this.klasycznyCiemnyToolStripMenuItem.Name = "klasycznyCiemnyToolStripMenuItem";
-            this.klasycznyCiemnyToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.klasycznyCiemnyToolStripMenuItem.Text = "Klasyczny ciemny";
+            this.klasycznyCiemnyToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.klasycznyCiemnyToolStripMenuItem.Text = "Klasyczny (odwrócone kolory)";
             this.klasycznyCiemnyToolStripMenuItem.Click += new System.EventHandler(this.klasycznyCiemnyToolStripMenuItem_Click);
             // 
             // draculaToolStripMenuItem
             // 
             this.draculaToolStripMenuItem.Name = "draculaToolStripMenuItem";
-            this.draculaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.draculaToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.draculaToolStripMenuItem.Text = "Dracula";
             this.draculaToolStripMenuItem.Click += new System.EventHandler(this.draculaToolStripMenuItem_Click);
             // 
@@ -607,7 +634,8 @@
             this.szyfrCezaraToolStripMenuItem2,
             this.szyfrCezaraZWlasnymKluczemToolStripMenuItem2,
             this.binariaToolStripMenuItem2,
-            this.brainFuckToolStripMenuItem2});
+            this.brainFuckToolStripMenuItem2,
+            this.tripleDESToolStripMenuItem});
             this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
             this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton1.Name = "toolStripSplitButton1";
@@ -635,6 +663,20 @@
             this.binariaToolStripMenuItem2.Text = "Binaria";
             this.binariaToolStripMenuItem2.Click += new System.EventHandler(this.binariaToolStripMenuItem2_Click);
             // 
+            // brainFuckToolStripMenuItem2
+            // 
+            this.brainFuckToolStripMenuItem2.Name = "brainFuckToolStripMenuItem2";
+            this.brainFuckToolStripMenuItem2.Size = new System.Drawing.Size(242, 22);
+            this.brainFuckToolStripMenuItem2.Text = "BrainFuck";
+            this.brainFuckToolStripMenuItem2.Click += new System.EventHandler(this.brainFuckToolStripMenuItem2_Click);
+            // 
+            // tripleDESToolStripMenuItem
+            // 
+            this.tripleDESToolStripMenuItem.Name = "tripleDESToolStripMenuItem";
+            this.tripleDESToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.tripleDESToolStripMenuItem.Text = "TripleDES";
+            this.tripleDESToolStripMenuItem.Click += new System.EventHandler(this.tripleDESToolStripMenuItem_Click);
+            // 
             // toolStripSplitButton2
             // 
             this.toolStripSplitButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -642,7 +684,8 @@
             this.szyfrCezaraToolStripMenuItem3,
             this.szyfrCezaraZWlasnymKluczemToolStripMenuItem3,
             this.binariaToolStripMenuItem3,
-            this.brainFuckToolStripMenuItem});
+            this.brainFuckToolStripMenuItem,
+            this.tripleDESToolStripMenuItem1});
             this.toolStripSplitButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton2.Image")));
             this.toolStripSplitButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton2.Name = "toolStripSplitButton2";
@@ -676,6 +719,13 @@
             this.brainFuckToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.brainFuckToolStripMenuItem.Text = "BrainFuck";
             this.brainFuckToolStripMenuItem.Click += new System.EventHandler(this.brainFuckToolStripMenuItem_Click);
+            // 
+            // tripleDESToolStripMenuItem1
+            // 
+            this.tripleDESToolStripMenuItem1.Name = "tripleDESToolStripMenuItem1";
+            this.tripleDESToolStripMenuItem1.Size = new System.Drawing.Size(242, 22);
+            this.tripleDESToolStripMenuItem1.Text = "TripleDES";
+            this.tripleDESToolStripMenuItem1.Click += new System.EventHandler(this.tripleDESToolStripMenuItem1_Click);
             // 
             // richTextBox1
             // 
@@ -724,20 +774,6 @@
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
-            // 
-            // brainFuckToolStripMenuItem2
-            // 
-            this.brainFuckToolStripMenuItem2.Name = "brainFuckToolStripMenuItem2";
-            this.brainFuckToolStripMenuItem2.Size = new System.Drawing.Size(242, 22);
-            this.brainFuckToolStripMenuItem2.Text = "BrainFuck";
-            this.brainFuckToolStripMenuItem2.Click += new System.EventHandler(this.brainFuckToolStripMenuItem2_Click);
-            // 
-            // brainFuckToolStripMenuItem3
-            // 
-            this.brainFuckToolStripMenuItem3.Name = "brainFuckToolStripMenuItem3";
-            this.brainFuckToolStripMenuItem3.Size = new System.Drawing.Size(242, 22);
-            this.brainFuckToolStripMenuItem3.Text = "BrainFuck";
-            this.brainFuckToolStripMenuItem3.Click += new System.EventHandler(this.brainFuckToolStripMenuItem3_Click);
             // 
             // MainWindow
             // 
@@ -840,6 +876,10 @@
         private System.Windows.Forms.ToolStripMenuItem brainFuckToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem brainFuckToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem brainFuckToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem tripleDESToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tripleDESToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tripleDESToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem tripleDESToolStripMenuItem3;
     }
 }
 

@@ -11,6 +11,7 @@ using System.IO;
 using System.Windows.Documents;
 using System.Speech;
 using System.Speech.Synthesis;
+using System.Security.Cryptography;
 
 namespace Textlow
 {
@@ -693,6 +694,7 @@ namespace Textlow
         private void MainWindow_Load(object sender, EventArgs e)
         {
             fontDialog1.Font = richTextBox1.Font;
+
         }
 
         private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
@@ -724,6 +726,7 @@ namespace Textlow
         {
             fontDialog1.ShowDialog();
             richTextBox1.SelectionFont = fontDialog1.Font;
+            richTextBox1.Font = fontDialog1.Font;
         }
 
         private void binariaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1081,7 +1084,7 @@ namespace Textlow
 
                 MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na BrainFuck.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
             }
-            
+
         }
         public static string strToBf(string input)
         {
@@ -1170,5 +1173,92 @@ namespace Textlow
                 MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na BrainFuck.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
             }
         }
+
+        private void tripleDESToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string value = "";
+            if (InputBox("Podaj klucz", "Podaj własny klucz:", ref value) == DialogResult.OK)
+            {
+                richTextBox1.Text = tDESEncrypt(richTextBox1.Text, value);
+            }
+        }
+
+        private void tripleDESToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            string value = "";
+            if (InputBox("Podaj klucz", "Podaj własny klucz:", ref value) == DialogResult.OK)
+            {
+
+                richTextBox1.Text = tDESDecrypt(richTextBox1.Text, value);
+
+            }
+        }
+        public static string tDESEncrypt(string toEncrypt, string enkey)
+        {
+            byte[] keyArray;
+            byte[] toEncryptArray = UTF8Encoding.UTF8.GetBytes(toEncrypt);
+            string key = enkey;
+            MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
+            keyArray = hashmd5.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+            hashmd5.Clear();
+            TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
+            tdes.Key = keyArray;
+            tdes.Mode = CipherMode.ECB;
+            tdes.Padding = PaddingMode.PKCS7;
+            ICryptoTransform cTransform = tdes.CreateEncryptor();
+            byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
+            tdes.Clear();
+            return Convert.ToBase64String(resultArray, 0, resultArray.Length);
+        }
+        public static string tDESDecrypt(string cipherString, string dekey)
+        {
+            byte[] keyArray;
+            byte[] toEncryptArray = Convert.FromBase64String(cipherString);
+            string key = dekey;
+            MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
+            keyArray = hashmd5.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+            hashmd5.Clear();
+            TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
+            tdes.Key = keyArray;
+            tdes.Mode = CipherMode.ECB;
+            tdes.Padding = PaddingMode.PKCS7;
+            ICryptoTransform cTransform = tdes.CreateDecryptor();
+            byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
+            tdes.Clear();
+            return UTF8Encoding.UTF8.GetString(resultArray);
+        }
+
+        private void tripleDESToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            string value = "";
+            if (InputBox("Podaj klucz", "Podaj własny klucz:", ref value) == DialogResult.OK)
+            {
+                string tDesString;
+                OpenFileDialog openFile = new OpenFileDialog();
+                openFile.Title = "Wybierz plik do otwarcia:";
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {
+
+                    using (StreamReader sr = new StreamReader(openFile.FileName))
+                    {
+                        tDesString = sr.ReadToEnd();
+
+                        richTextBox1.Text = tDESDecrypt(tDesString, value);
+                        sr.Close();
+                    }
+                }
+            }
+        }
+
+        private void tripleDESToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            string value = "";
+            if (InputBox("Podaj klucz", "Podaj własny klucz:", ref value) == DialogResult.OK)
+            {
+                saveAs(tDESEncrypt(richTextBox1.Text, value));
+            }
+        }
+
+        
     }
 }
