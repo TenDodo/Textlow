@@ -1,8 +1,10 @@
-﻿using System;
+﻿#region Using
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +14,13 @@ using System.Windows.Documents;
 using System.Speech;
 using System.Speech.Synthesis;
 using System.Security.Cryptography;
-
+using System.Text.RegularExpressions;
+#endregion
 namespace Textlow
 {
     public partial class MainWindow : Form
     {
+        #region Basics
         public MainWindow()
         {
             InitializeComponent();
@@ -25,9 +29,33 @@ namespace Textlow
         public int line = 0;
         public int column = 0;
 
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            fontDialog1.Font = richTextBox1.Font;
+            bgColor = richTextBox1.BackColor;
+        }
 
+        private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (richTextBox1.Text != "")
+            {
+                DialogResult result;
+                result = MessageBox.Show("Czy chcesz zapisać bieżący dokument?", "Niezapisany dokument", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    saveAs(richTextBox1.Text);
 
+                }
+                else if (result == DialogResult.No)
+                {
 
+                }
+            }
+
+        }
+        #endregion
+
+        #region Tool Strip
         private void newToolStripButton_Click(object sender, EventArgs e)
         {
             if (richTextBox1.Text != "")
@@ -74,9 +102,32 @@ namespace Textlow
             }
         }
 
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Title = "Wybierz plik do otwarcia:";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamReader sr = new StreamReader(openFile.FileName))
+                {
+                    richTextBox1.Text += sr.ReadToEnd();
+                    sr.Close();
+                }
+            }
+        }
+
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
             saveAs(richTextBox1.Text);
+        }
+
+        private void printToolStripButton_Click(object sender, EventArgs e)
+        {
+
+            if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
+            {
+                printDocument1.Print();
+            }
         }
 
         private void cutToolStripButton_Click(object sender, EventArgs e)
@@ -94,21 +145,183 @@ namespace Textlow
             richTextBox1.Paste();
         }
 
-        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            richTextBox1.Undo();
+            richTextBox1.SelectionStart = 0;
+            richTextBox1.ScrollToCaret();
         }
 
-        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            richTextBox1.Redo();
+            #region Secrets
+
+            if (richTextBox1.Text == "crazyfrog" || richTextBox1.Text == "crazy frog")
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=kGGoeDrjL5g");
+            }
+            else if (richTextBox1.Text == "rick" || richTextBox1.Text == "rickroll" || richTextBox1.Text == "rick roll")
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+            }
+            else if (richTextBox1.Text == "allstar" || richTextBox1.Text == "all star")
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=L_jWHffIx5E");
+            }
+            else if (richTextBox1.Text == "Adrian Hajdun")
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=BKpGCsToSe8");
+            }
+            else if (richTextBox1.Text == "taskmgr" || richTextBox1.Text == "taskmanager" || richTextBox1.Text == "task manager")
+            {
+                System.Diagnostics.Process.Start("taskmgr");
+            }
+            else if (richTextBox1.Text == "⠀")
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=UxM5UgpXYM4");
+            }
+            else if (richTextBox1.Text == "cmd")
+            {
+                System.Diagnostics.Process.Start("cmd");
+            }
+            else if (richTextBox1.Text == "sans granie")
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=R8uK9bjME6Y");
+            }
+            else if (richTextBox1.Text == "bad apple" || richTextBox1.Text == "badapple" || richTextBox1.Text == "Bad Apple")
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=FtutLA63Cp8");
+            }
+            else if (richTextBox1.Text == "Säkkijärven Polkka")
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=KCm2PtSgzkA");
+            }
+            else if (richTextBox1.Text == "Tunak Tunak Tun")
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=vTIIMJ9tUc8");
+            }
+            else if (richTextBox1.Text == "leekspin" || richTextBox1.Text == "leek spin")
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=1wnE4vF9CQ4");
+            }
+            else if (richTextBox1.Text == "bitch lasagna" || richTextBox1.Text == "tseries")
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=6Dh-RL__uN4");
+            }
+            else if (richTextBox1.Text == "2020")
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=XaO_3GcQyiE");
+            }
+            else if (richTextBox1.Text == "github")
+            {
+                System.Diagnostics.Process.Start("https://github.com/TenDodo/Textlow");
+            }
+            else if (richTextBox1.Text == "bruh")
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=TKvjEQXKeec");
+                richTextBox1.Text = "what";
+                richTextBox1.Font = new Font(richTextBox1.Font.Name, 200, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+            }
+            else if (richTextBox1.Text == "btw i use arch" || richTextBox1.Text == "i use arch btw")
+            {
+                richTextBox1.Text = "me too";
+            }
+            else if (richTextBox1.Text == "doge" || richTextBox1.Text == "wow" || richTextBox1.Text == "omg")
+            {
+                richTextBox1.Text = "░░░░░░░░░▄░░░░░░░░░░░░░░▄░░░░\n░░░░░░░░▌▒█░░░░░░░░░░░▄▀▒▌░░░\n░░░░░░░░▌▒▒█░░░░░░░░▄▀▒▒▒▐░░░\n░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐░░░\n░░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐░░░\n░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌░░░\n░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒▌░░\n░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐░░\n░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄▌░\n░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▌░\n▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒▐░\n▐▒▒▐▀▐▀▒░▄▄▒▄▒▒▒▒▒▒░▒░▒░▒▒▒▒▌\n▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒▒▒░▒░▒░▒▒▐░\n░▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒░▒░▒░▒░▒▒▒▌░\n░▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▒▄▒▒▐░░\n░░▀▄▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▄▒▒▒▒▌░░\n░░░░▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀░░░\n░░░░░░▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀░░░░░\n░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▀▀░░░░░░░░\nWow! Such Doge!";
+                richTextBox1.Font = new Font("Consolas", richTextBox1.Font.Size, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+            }
+            else if (richTextBox1.Text == "nyan cat" || richTextBox1.Text == "nyan" || richTextBox1.Text == "nyancat")
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=QH2-TGUlwu4");
+            }
+            else if (richTextBox1.Text == "despacito")
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=kJQP7kiw5Fk");
+            }
+            else if (richTextBox1.Text == "we are number one")
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=PfYnvDL0Qcw");
+            }
+            else if (richTextBox1.Text == "kazoo kid" || richTextBox1.Text == "kazookid")
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=g-sgw9bPV4A");
+            }
+            else if (richTextBox1.Text == "date" || richTextBox1.Text == "time" || richTextBox1.Text == "what time is it")
+            {
+                richTextBox1.Text = DateTime.Now.ToString();
+            }
+            else
+            {
+                richTextBox1.ScrollToCaret();
+            }
+            #endregion
         }
 
-        private void selectallToolStripMenuItem_Click(object sender, EventArgs e)
+        private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            richTextBox1.SelectAll();
+            richTextBox1.SelectionStart = richTextBox1.Text.Length;
+            richTextBox1.ScrollToCaret();
         }
 
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            fontDialog1.ShowDialog();
+            richTextBox1.SelectionFont = fontDialog1.Font;
+            richTextBox1.Font = fontDialog1.Font;
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+
+            voice.SpeakAsync(richTextBox1.Text);
+        }
+
+        private void toolStripButton7_Click(object sender, EventArgs e)
+        {
+            richTextBox1.ZoomFactor += 0.3F;
+        }
+
+        private void toolStripButton8_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.ZoomFactor - 0.3F > 0F)
+            {
+                richTextBox1.ZoomFactor -= 0.3F;
+            }
+        }
+
+        private void toolStripButton9_Click(object sender, EventArgs e)
+        {
+            richTextBox1.ZoomFactor = 1;
+        }
+
+        private void toolStripButton10_Click(object sender, EventArgs e)
+        {
+            int start = 0;
+            int end = richTextBox1.Text.LastIndexOf(toolStripTextBox1.Text);
+
+            while (start < end)
+            {
+                richTextBox1.Find(toolStripTextBox1.Text, start, richTextBox1.TextLength, RichTextBoxFinds.MatchCase);
+                richTextBox1.SelectionBackColor = Color.Blue;
+                richTextBox1.SelectionColor = Color.Black;
+                start = richTextBox1.Text.IndexOf(toolStripTextBox1.Text, start) + 1;
+            }
+            richTextBox1.DeselectAll();
+        }
+
+        private void toolStripButton11_Click_1(object sender, EventArgs e)
+        {
+            resetColors();
+        }
+
+        private void helpToolStripButton_Click(object sender, EventArgs e)
+        {
+            info form2 = new info();
+            form2.Show();
+        }
+        #endregion
+
+        #region Menu Strip
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (richTextBox1.Text != "")
@@ -154,14 +367,51 @@ namespace Textlow
 
         }
 
+        private void dopiszTekstZPlikuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Title = "Wybierz plik do otwarcia:";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamReader sr = new StreamReader(openFile.FileName))
+                {
+                    richTextBox1.Text += sr.ReadToEnd();
+                    sr.Close();
+                }
+            }
+        }
+
         private void saveasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             saveAs(richTextBox1.Text);
         }
 
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
+            {
+                printDocument1.Print();
+            }
+        }
+
         private void endToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Undo();
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Redo();
+        }
+
+        private void selectallToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.SelectAll();
         }
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -178,7 +428,59 @@ namespace Textlow
         {
             richTextBox1.Paste();
         }
-        #region Formaty Plików
+        #endregion
+
+        #region Themes
+        private void textlowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.BackColor = Color.Black;
+            bgColor = Color.Black;
+            richTextBox1.ForeColor = Color.Yellow;
+            textlowToolStripMenuItem.Checked = true;
+            klasycznyToolStripMenuItem.Checked = false;
+            klasycznyCiemnyToolStripMenuItem.Checked = false;
+            draculaToolStripMenuItem.Checked = false;
+            resetColors();
+        }
+
+        private void klasycznyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.BackColor = Color.White;
+            bgColor = Color.White;
+            richTextBox1.ForeColor = Color.Black;
+            textlowToolStripMenuItem.Checked = false;
+            klasycznyToolStripMenuItem.Checked = true;
+            klasycznyCiemnyToolStripMenuItem.Checked = false;
+            draculaToolStripMenuItem.Checked = false;
+            resetColors();
+        }
+
+        private void klasycznyCiemnyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.BackColor = Color.Black;
+            bgColor = Color.Black;
+            richTextBox1.ForeColor = Color.White;
+            textlowToolStripMenuItem.Checked = false;
+            klasycznyToolStripMenuItem.Checked = false;
+            klasycznyCiemnyToolStripMenuItem.Checked = true;
+            draculaToolStripMenuItem.Checked = false;
+            resetColors();
+        }
+
+        private void draculaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.BackColor = Color.FromArgb(40, 42, 54);
+            bgColor = Color.FromArgb(40, 42, 54);
+            richTextBox1.ForeColor = Color.FromArgb(188, 194, 205);
+            textlowToolStripMenuItem.Checked = false;
+            klasycznyToolStripMenuItem.Checked = false;
+            klasycznyCiemnyToolStripMenuItem.Checked = false;
+            draculaToolStripMenuItem.Checked = true;
+            resetColors();
+        }
+        #endregion     
+
+        #region Filters
         string txt = "Dokumenty tekstowe (*.txt)|*.txt";
         string tl = "|Textlow (*.tl)|*.tl";
         string html = "|html (*.html)|*.html";
@@ -264,198 +566,8 @@ namespace Textlow
         string yaml = "|YAML Ain't Markup Language (*.yaml)|*.yaml";
         string all = "|All files (*.*)|*.*";
         #endregion
-        private void saveAs(string textToSave)
-        {
 
-            SaveFileDialog saveFile = new SaveFileDialog();
-            saveFile.Title = "Zapisz plik jako:";
-            saveFile.Filter = txt + tl + all + html + css + js + json + rtf + bat + sh + fas + ada + asm + mib + asp + au3 + avs + bc + bb + bf + c + ml + cmake + cbl + orc + coffee + cpp + cs + d + diff + erl + src + forth + f + f77 + bi + hs + ini + iss + hex + java + jsp + kix + lsp + tex + lua + mak + m + mms + nim + tab + nfo + nsh + osx + mm + pp + pl + php + ps + ps1 + properties + pb + py + r + reb + reg + rc + rb + rs + scm + st + scp + sql + mot + swift + tcl + tek + vb + t2t + v + vhd + pro + xml + yaml;
-            if (saveFile.ShowDialog() == DialogResult.OK)
-            {
-                StreamWriter textoutput = new StreamWriter(saveFile.FileName);
-                textoutput.Write(textToSave);
-                textoutput.Close();
-            }
-        }
-        private void openFile()
-        {
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Title = "Wybierz plik do otwarcia:";
-            if (openFile.ShowDialog() == DialogResult.OK)
-            {
-                richTextBox1.Clear();
-                using (StreamReader sr = new StreamReader(openFile.FileName))
-                {
-                    richTextBox1.Text = sr.ReadToEnd();
-                    sr.Close();
-                }
-            }
-        }
-
-        private void textlowToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            richTextBox1.BackColor = Color.Black;
-            richTextBox1.ForeColor = Color.Yellow;
-            textlowToolStripMenuItem.Checked = true;
-            klasycznyToolStripMenuItem.Checked = false;
-            klasycznyCiemnyToolStripMenuItem.Checked = false;
-            draculaToolStripMenuItem.Checked = false;
-        }
-
-        private void klasycznyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            richTextBox1.BackColor = Color.White;
-            richTextBox1.ForeColor = Color.Black;
-            textlowToolStripMenuItem.Checked = false;
-            klasycznyToolStripMenuItem.Checked = true;
-            klasycznyCiemnyToolStripMenuItem.Checked = false;
-            draculaToolStripMenuItem.Checked = false;
-        }
-
-        private void klasycznyCiemnyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            richTextBox1.BackColor = Color.Black;
-            richTextBox1.ForeColor = Color.White;
-            textlowToolStripMenuItem.Checked = false;
-            klasycznyToolStripMenuItem.Checked = false;
-            klasycznyCiemnyToolStripMenuItem.Checked = true;
-            draculaToolStripMenuItem.Checked = false;
-        }
-
-        private void helpToolStripButton_Click(object sender, EventArgs e)
-        {
-            info form2 = new info();
-            form2.Show();
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            line = 1 + richTextBox1.GetLineFromCharIndex(richTextBox1.GetFirstCharIndexOfCurrentLine());
-            column = 1 + richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexOfCurrentLine();
-            toolStripStatusLabel1.Text = "Wiersz: " + line.ToString() + " | Kolumna: " + column.ToString();
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            richTextBox1.SelectionStart = 0;
-            richTextBox1.ScrollToCaret();
-        }
-
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            richTextBox1.SelectionStart = richTextBox1.Text.Length;
-            richTextBox1.ScrollToCaret();
-        }
-
-        private void toolStripButton3_Click(object sender, EventArgs e)
-        {
-            #region Secrets
-
-            if (richTextBox1.Text == "crazyfrog" || richTextBox1.Text == "crazy frog")
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=kGGoeDrjL5g");
-            }
-            else if (richTextBox1.Text == "rick" || richTextBox1.Text == "rickroll" || richTextBox1.Text == "rick roll")
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
-            }
-            else if (richTextBox1.Text == "allstar" || richTextBox1.Text == "all star")
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=L_jWHffIx5E");
-            }
-            else if (richTextBox1.Text == "Adrian Hajdun")
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=BKpGCsToSe8");
-            }
-            else if (richTextBox1.Text == "⠀")
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=UxM5UgpXYM4");
-            }
-            else if (richTextBox1.Text == "sans granie")
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=R8uK9bjME6Y");
-            }
-            else if (richTextBox1.Text == "Säkkijärven Polkka")
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=KCm2PtSgzkA");
-            }
-            else if (richTextBox1.Text == "Tunak Tunak Tun")
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=vTIIMJ9tUc8");
-            }
-            else if (richTextBox1.Text == "leekspin" || richTextBox1.Text == "leek spin")
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=1wnE4vF9CQ4");
-            }
-            else if (richTextBox1.Text == "bitch lasagna" || richTextBox1.Text == "tseries")
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=6Dh-RL__uN4");
-            }
-            else if (richTextBox1.Text == "2020")
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=XaO_3GcQyiE");
-            }
-            else if (richTextBox1.Text == "github")
-            {
-                System.Diagnostics.Process.Start("https://github.com/TenDodo/Textlow");
-            }
-            else if (richTextBox1.Text == "bruh")
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=TKvjEQXKeec");
-                richTextBox1.Text = "what";
-                richTextBox1.Font = new Font(richTextBox1.Font.Name, 200, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
-            }
-            else if (richTextBox1.Text == "btw i use arch" || richTextBox1.Text == "i use arch btw")
-            {
-                richTextBox1.Text = "me too";
-            }
-            else if (richTextBox1.Text == "doge" || richTextBox1.Text == "wow" || richTextBox1.Text == "omg")
-            {
-                richTextBox1.Text = "░░░░░░░░░▄░░░░░░░░░░░░░░▄░░░░\n░░░░░░░░▌▒█░░░░░░░░░░░▄▀▒▌░░░\n░░░░░░░░▌▒▒█░░░░░░░░▄▀▒▒▒▐░░░\n░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐░░░\n░░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐░░░\n░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌░░░\n░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒▌░░\n░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐░░\n░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄▌░\n░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▌░\n▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒▐░\n▐▒▒▐▀▐▀▒░▄▄▒▄▒▒▒▒▒▒░▒░▒░▒▒▒▒▌\n▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒▒▒░▒░▒░▒▒▐░\n░▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒░▒░▒░▒░▒▒▒▌░\n░▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▒▄▒▒▐░░\n░░▀▄▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▄▒▒▒▒▌░░\n░░░░▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀░░░\n░░░░░░▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀░░░░░\n░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▀▀░░░░░░░░\nWow! Such Doge!";
-                richTextBox1.Font = new Font("Consolas", richTextBox1.Font.Size, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
-            }
-            else if (richTextBox1.Text == "nyan cat" || richTextBox1.Text == "nyan" || richTextBox1.Text == "nyancat")
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=QH2-TGUlwu4");
-            }
-            else if (richTextBox1.Text == "despacito")
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=kJQP7kiw5Fk");
-            }
-            else if (richTextBox1.Text == "we are number one")
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=PfYnvDL0Qcw");
-            }
-            else if (richTextBox1.Text == "kazoo kid" || richTextBox1.Text == "kazookid")
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=g-sgw9bPV4A");
-            }
-            else if (richTextBox1.Text == "date" || richTextBox1.Text == "time" || richTextBox1.Text == "what time is it")
-            {
-                richTextBox1.Text = DateTime.Now.ToString();
-            }
-            else
-            {
-                richTextBox1.ScrollToCaret();
-            }
-            #endregion
-        }
-
-        private void toolStripSplitButton1_ButtonClick(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    richTextBox1.Font = new Font("Consolas", int.Parse(toolStripTextBox1.Text), FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
-            //}
-            //catch
-            //{
-
-            //}
-            //toolStripSplitButton1.Text = toolStripTextBox1.Text;
-        }
-
-
-
+        #region Encoding
         private void szyfrCezaraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool isAscii = true;
@@ -475,51 +587,6 @@ namespace Textlow
                 MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na szyfr cezara.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
             }
 
-        }
-
-        public static string ceasarCipher(string ceasarCipherInput, int ceasarCipherKey)
-        {
-            string ceasarCipherOutput = string.Empty;
-            foreach (char ch in ceasarCipherInput)
-            {
-                ceasarCipherOutput += cipher(ch, ceasarCipherKey);
-
-            }
-            return ceasarCipherOutput;
-        }
-        public static char cipher(char ch, int key)
-        {
-            if (!char.IsLetter(ch))
-            {
-                return ch;
-            }
-
-            char d = char.IsUpper(ch) ? 'A' : 'a';
-            return (char)((((ch + key) - d) % 26) + d);
-
-
-        }
-
-        private void szyfrCezaraToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            string textToDecipher;
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Title = "Wybierz plik do otwarcia:";
-            if (openFile.ShowDialog() == DialogResult.OK)
-            {
-                richTextBox1.Clear();
-                using (StreamReader sr = new StreamReader(openFile.FileName))
-                {
-                    textToDecipher = sr.ReadToEnd();
-                    richTextBox1.Text = ceasarDecipher(textToDecipher, 3);
-                    sr.Close();
-                }
-            }
-        }
-
-        public static string ceasarDecipher(string ceasarDecipherInput, int ceasarDecipherKey)
-        {
-            return ceasarCipher(ceasarDecipherInput, 26 - ceasarDecipherKey);
         }
 
         private void szyfrCezaraZWlasnymKluczemToolStripMenuItem_Click(object sender, EventArgs e)
@@ -559,49 +626,323 @@ namespace Textlow
             {
                 MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na szyfr cezara.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
             }
+        }
+        private void binariaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool isAscii = true;
+            foreach (char c in richTextBox1.Text)
+            {
+                if (c > 127)
+                {
+                    isAscii = false;
+                }
+            }
+            if (isAscii)
+            {
+                saveAs(StringToBinary(richTextBox1.Text));
+            }
+            else
+            {
+
+                MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+            }
+
+        }
+
+        private void brainFuckToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            bool isAscii = true;
+            foreach (char c in richTextBox1.Text)
+            {
+                if (c > 127)
+                {
+                    isAscii = false;
+                }
+            }
+            if (isAscii)
+            {
+                saveAs(strToBf(richTextBox1.Text));
+            }
+            else
+            {
+
+                MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na BrainFuck.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+            }
+        }
+
+        private void tripleDESToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            string value = "";
+            if (InputBox("Podaj klucz", "Podaj własny klucz:", ref value) == DialogResult.OK)
+            {
+                saveAs(tDESEncrypt(richTextBox1.Text, value));
+            }
+        }
+
+        private void szyfrCezaraToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.Text.Length > 50000)
+            {
+                if (MessageBox.Show("Tekst który próbujesz zaszyfrować może okazać się zbyt długi. Kontynuowanie może spowodować zatrzymanie pracy programu. Czy chcesz kontynuować?", "Duża ilość znaków", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    bool isAscii = true;
+                    foreach (char c in richTextBox1.Text)
+                    {
+                        if (c > 127)
+                        {
+                            isAscii = false;
+                        }
+                    }
+                    if (isAscii)
+                    {
+                        richTextBox1.Text = ceasarCipher(richTextBox1.Text, 3);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na szyfr cezara.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                    }
+                }
+            }
+            else
+            {
+                bool isAscii = true;
+                foreach (char c in richTextBox1.Text)
+                {
+                    if (c > 127)
+                    {
+                        isAscii = false;
+                    }
+                }
+                if (isAscii)
+                {
+                    richTextBox1.Text = ceasarCipher(richTextBox1.Text, 3);
+                }
+                else
+                {
+                    MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na szyfr cezara.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                }
+            }
+        }
+
+        private void szyfrCezaraZWlasnymKluczemToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.Text.Length > 50000)
+            {
+                if (MessageBox.Show("Tekst który próbujesz zaszyfrować może okazać się zbyt długi. Kontynuowanie może spowodować zatrzymanie pracy programu. Czy chcesz kontynuować?", "Duża ilość znaków", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    bool isAscii = true;
+                    foreach (char c in richTextBox1.Text)
+                    {
+                        if (c > 127)
+                        {
+                            isAscii = false;
+                        }
+                    }
+                    if (isAscii)
+                    {
+                        int customCeasarKey;
+                        string value = "0";
+                        if (InputBox("Podaj klucz", "Podaj własny klucz (cyfra od 1 do 25):", ref value) == DialogResult.OK)
+                        {
+                            try
+                            {
+                                customCeasarKey = int.Parse(value);
+                                if (customCeasarKey > 25 || customCeasarKey < 1)
+                                {
+                                    MessageBox.Show("Wartość z poza dozwolonego przedziału, szyfrowanie może nie działać poprawnie.");
+
+                                }
+                                richTextBox1.Text = ceasarCipher(richTextBox1.Text, customCeasarKey);
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Nieprawidłowa wartość");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na szyfr cezara.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                    }
+                }
+            }
+            else
+            {
+                bool isAscii = true;
+                foreach (char c in richTextBox1.Text)
+                {
+                    if (c > 127)
+                    {
+                        isAscii = false;
+                    }
+                }
+                if (isAscii)
+                {
+                    int customCeasarKey;
+                    string value = "0";
+                    if (InputBox("Podaj klucz", "Podaj własny klucz (cyfra od 1 do 25):", ref value) == DialogResult.OK)
+                    {
+                        try
+                        {
+                            customCeasarKey = int.Parse(value);
+                            if (customCeasarKey > 25 || customCeasarKey < 1)
+                            {
+                                MessageBox.Show("Wartość z poza dozwolonego przedziału, szyfrowanie może nie działać poprawnie.");
+
+                            }
+                            richTextBox1.Text = ceasarCipher(richTextBox1.Text, customCeasarKey);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Nieprawidłowa wartość");
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na szyfr cezara.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                }
+            }
+
+        }
+
+        private void binariaToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.Text.Length > 50000)
+            {
+                if (MessageBox.Show("Tekst który próbujesz zaszyfrować może okazać się zbyt długi. Kontynuowanie może spowodować zatrzymanie pracy programu. Czy chcesz kontynuować?", "Duża ilość znaków", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    bool isAscii = true;
+                    foreach (char c in richTextBox1.Text)
+                    {
+                        if (c > 127)
+                        {
+                            isAscii = false;
+                        }
+                    }
+                    if (isAscii)
+                    {
+                        richTextBox1.Text = StringToBinary(richTextBox1.Text);
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                    }
+                }
+            }
+            else
+            {
+                bool isAscii = true;
+                foreach (char c in richTextBox1.Text)
+                {
+                    if (c > 127)
+                    {
+                        isAscii = false;
+                    }
+                }
+                if (isAscii)
+                {
+                    richTextBox1.Text = StringToBinary(richTextBox1.Text);
+                }
+                else
+                {
+
+                    MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                }
+            }
+
+        }
+
+        private void brainFuckToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.Text.Length > 50000)
+            {
+                if (MessageBox.Show("Tekst który próbujesz zaszyfrować może okazać się zbyt długi. Kontynuowanie może spowodować zatrzymanie pracy programu. Czy chcesz kontynuować?", "Duża ilość znaków", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    bool isAscii = true;
+                    foreach (char c in richTextBox1.Text)
+                    {
+                        if (c > 127)
+                        {
+                            isAscii = false;
+                        }
+                    }
+                    if (isAscii)
+                    {
+                        richTextBox1.Text = strToBf(richTextBox1.Text);
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na BrainFuck.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                    }
+                }
+            }
+            else
+            {
+                bool isAscii = true;
+                foreach (char c in richTextBox1.Text)
+                {
+                    if (c > 127)
+                    {
+                        isAscii = false;
+                    }
+                }
+                if (isAscii)
+                {
+                    richTextBox1.Text = strToBf(richTextBox1.Text);
+                }
+                else
+                {
+
+                    MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na BrainFuck.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                }
+            }
+        }
+
+        private void tripleDESToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.Text.Length > 50000)
+            {
+                if (MessageBox.Show("Tekst który próbujesz zaszyfrować może okazać się zbyt długi. Kontynuowanie może spowodować zatrzymanie pracy programu. Czy chcesz kontynuować?", "Duża ilość znaków", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    string value = "";
+                    if (InputBox("Podaj klucz", "Podaj własny klucz:", ref value) == DialogResult.OK)
+                    {
+                        richTextBox1.Text = tDESEncrypt(richTextBox1.Text, value);
+                    }
+                }
+            }
+            else
+            {
+                string value = "";
+                if (InputBox("Podaj klucz", "Podaj własny klucz:", ref value) == DialogResult.OK)
+                {
+                    richTextBox1.Text = tDESEncrypt(richTextBox1.Text, value);
+                }
+            }
 
 
         }
-        public static DialogResult InputBox(string title, string promptText, ref string value)
+        #endregion
+
+        #region Decoding
+        private void szyfrCezaraToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Form form = new Form();
-            Label label = new Label();
-            TextBox textBox = new TextBox();
-            Button buttonOk = new Button();
-            Button buttonCancel = new Button();
-
-            form.Text = title;
-            label.Text = promptText;
-            textBox.Text = value;
-
-            buttonOk.Text = "OK";
-            buttonCancel.Text = "Anuluj";
-            buttonOk.DialogResult = DialogResult.OK;
-            buttonCancel.DialogResult = DialogResult.Cancel;
-
-            label.SetBounds(9, 20, 372, 13);
-            textBox.SetBounds(12, 36, 372, 20);
-            buttonOk.SetBounds(228, 72, 75, 23);
-            buttonCancel.SetBounds(309, 72, 75, 23);
-
-            label.AutoSize = true;
-            textBox.Anchor = textBox.Anchor | AnchorStyles.Right;
-            buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-
-            form.ClientSize = new Size(396, 107);
-            form.Controls.AddRange(new Control[] { label, textBox, buttonOk, buttonCancel });
-            form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
-            form.FormBorderStyle = FormBorderStyle.FixedDialog;
-            form.StartPosition = FormStartPosition.CenterScreen;
-            form.MinimizeBox = false;
-            form.MaximizeBox = false;
-            form.AcceptButton = buttonOk;
-            form.CancelButton = buttonCancel;
-
-            DialogResult dialogResult = form.ShowDialog();
-            value = textBox.Text;
-            return dialogResult;
+            string textToDecipher;
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Title = "Wybierz plik do otwarcia:";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                richTextBox1.Clear();
+                using (StreamReader sr = new StreamReader(openFile.FileName))
+                {
+                    textToDecipher = sr.ReadToEnd();
+                    richTextBox1.Text = ceasarDecipher(textToDecipher, 3);
+                    sr.Close();
+                }
+            }
         }
 
         private void szyfrCezaraZWlasnymKluczemToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -640,128 +981,6 @@ namespace Textlow
 
         }
 
-        private void toolStripButton4_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Title = "Wybierz plik do otwarcia:";
-            if (openFile.ShowDialog() == DialogResult.OK)
-            {
-                using (StreamReader sr = new StreamReader(openFile.FileName))
-                {
-                    richTextBox1.Text += sr.ReadToEnd();
-                    sr.Close();
-                }
-            }
-        }
-
-        private void dopiszTekstZPlikuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Title = "Wybierz plik do otwarcia:";
-            if (openFile.ShowDialog() == DialogResult.OK)
-            {
-                using (StreamReader sr = new StreamReader(openFile.FileName))
-                {
-                    richTextBox1.Text += sr.ReadToEnd();
-                    sr.Close();
-                }
-            }
-        }
-
-        private void printToolStripButton_Click(object sender, EventArgs e)
-        {
-
-            if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
-            {
-                printDocument1.Print();
-            }
-        }
-
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            e.Graphics.DrawString(richTextBox1.Text, richTextBox1.Font, Brushes.Black, new PointF(100, 100));
-
-        }
-
-        private void printToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
-            {
-                printDocument1.Print();
-            }
-        }
-
-        private void MainWindow_Load(object sender, EventArgs e)
-        {
-            fontDialog1.Font = richTextBox1.Font;
-
-        }
-
-        private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (richTextBox1.Text != "")
-            {
-                DialogResult result;
-                result = MessageBox.Show("Czy chcesz zapisać bieżący dokument?", "Niezapisany dokument", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
-                    saveAs(richTextBox1.Text);
-
-                }
-                else if (result == DialogResult.No)
-                {
-
-                }
-            }
-
-        }
-        SpeechSynthesizer voice = new SpeechSynthesizer();
-        private void toolStripButton5_Click(object sender, EventArgs e)
-        {
-
-            voice.SpeakAsync(richTextBox1.Text);
-        }
-
-        private void toolStripButton6_Click(object sender, EventArgs e)
-        {
-            fontDialog1.ShowDialog();
-            richTextBox1.SelectionFont = fontDialog1.Font;
-            richTextBox1.Font = fontDialog1.Font;
-        }
-
-        private void binariaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            bool isAscii = true;
-            foreach (char c in richTextBox1.Text)
-            {
-                if (c > 127)
-                {
-                    isAscii = false;
-                }
-            }
-            if (isAscii)
-            {
-                saveAs(StringToBinary(richTextBox1.Text));
-            }
-            else
-            {
-
-                MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
-            }
-
-        }
-
-        public static string StringToBinary(string data)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            foreach (char c in data.ToCharArray())
-            {
-                sb.Append(Convert.ToString(c, 2).PadLeft(8, '0'));
-            }
-            return sb.ToString();
-        }
-
         private void binariaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             string binToS;
@@ -795,108 +1014,53 @@ namespace Textlow
                 }
             }
         }
-        public static string BinaryToString(string data)
-        {
-            List<Byte> byteList = new List<Byte>();
 
-            for (int i = 0; i < data.Length; i += 8)
+        private void brainFuckToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            string brfToS;
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Title = "Wybierz plik do otwarcia:";
+            if (openFile.ShowDialog() == DialogResult.OK)
             {
-                byteList.Add(Convert.ToByte(data.Substring(i, 8), 2));
-            }
-            return Encoding.ASCII.GetString(byteList.ToArray());
-        }
 
-        private void draculaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            richTextBox1.BackColor = Color.FromArgb(40, 42, 54);
-            richTextBox1.ForeColor = Color.FromArgb(188, 194, 205);
-            textlowToolStripMenuItem.Checked = false;
-            klasycznyToolStripMenuItem.Checked = false;
-            klasycznyCiemnyToolStripMenuItem.Checked = false;
-            draculaToolStripMenuItem.Checked = true;
-        }
-
-        private void szyfrCezaraToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            bool isAscii = true;
-            foreach (char c in richTextBox1.Text)
-            {
-                if (c > 127)
+                using (StreamReader sr = new StreamReader(openFile.FileName))
                 {
-                    isAscii = false;
+                    brfToS = sr.ReadToEnd();
+
+                    richTextBox1.Clear();
+                    richTextBox1.Text = BFinterpreter(brfToS);
+
+
+                    sr.Close();
                 }
             }
-            if (isAscii)
-            {
-                richTextBox1.Text = ceasarCipher(richTextBox1.Text, 3);
-            }
-            else
-            {
-                MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na szyfr cezara.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
-            }
         }
 
-        private void szyfrCezaraZWlasnymKluczemToolStripMenuItem2_Click(object sender, EventArgs e)
+        private void tripleDESToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            bool isAscii = true;
-            foreach (char c in richTextBox1.Text)
+            string value = "";
+            if (InputBox("Podaj klucz", "Podaj własny klucz:", ref value) == DialogResult.OK)
             {
-                if (c > 127)
+                string tDesString;
+                OpenFileDialog openFile = new OpenFileDialog();
+                openFile.Title = "Wybierz plik do otwarcia:";
+                if (openFile.ShowDialog() == DialogResult.OK)
                 {
-                    isAscii = false;
-                }
-            }
-            if (isAscii)
-            {
-                int customCeasarKey;
-                string value = "0";
-                if (InputBox("Podaj klucz", "Podaj własny klucz (cyfra od 1 do 25):", ref value) == DialogResult.OK)
-                {
-                    try
-                    {
-                        customCeasarKey = int.Parse(value);
-                        if (customCeasarKey > 25 || customCeasarKey < 1)
-                        {
-                            MessageBox.Show("Wartość z poza dozwolonego przedziału, szyfrowanie może nie działać poprawnie.");
 
-                        }
-                        richTextBox1.Text = ceasarCipher(richTextBox1.Text, customCeasarKey);
-                    }
-                    catch
+                    using (StreamReader sr = new StreamReader(openFile.FileName))
                     {
-                        MessageBox.Show("Nieprawidłowa wartość");
+                        tDesString = sr.ReadToEnd();
+
+                        richTextBox1.Text = tDESDecrypt(tDesString, value);
+                        sr.Close();
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na szyfr cezara.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
-            }
-        }
-
-        private void binariaToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            bool isAscii = true;
-            foreach (char c in richTextBox1.Text)
-            {
-                if (c > 127)
-                {
-                    isAscii = false;
-                }
-            }
-            if (isAscii)
-            {
-                richTextBox1.Text = StringToBinary(richTextBox1.Text);
-            }
-            else
-            {
-
-                MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
             }
         }
 
         private void szyfrCezaraToolStripMenuItem3_Click(object sender, EventArgs e)
         {
+
             try
             {
                 richTextBox1.Text = ceasarDecipher(richTextBox1.Text, 3);
@@ -909,6 +1073,7 @@ namespace Textlow
 
         private void szyfrCezaraZWlasnymKluczemToolStripMenuItem3_Click(object sender, EventArgs e)
         {
+
             int customCeasarKey;
             string value = "0";
             if (InputBox("Podaj klucz", "Podaj własny klucz (cyfra od 1 do 25):", ref value) == DialogResult.OK)
@@ -940,6 +1105,7 @@ namespace Textlow
 
         private void binariaToolStripMenuItem3_Click(object sender, EventArgs e)
         {
+
             string binToS;
 
             binToS = richTextBox1.Text;
@@ -962,6 +1128,76 @@ namespace Textlow
 
 
         }
+
+        private void brainFuckToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = BFinterpreter(richTextBox1.Text);
+
+        }
+
+        private void tripleDESToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            string value = "";
+            if (InputBox("Podaj klucz", "Podaj własny klucz:", ref value) == DialogResult.OK)
+            {
+
+                richTextBox1.Text = tDESDecrypt(richTextBox1.Text, value);
+
+            }
+        }
+        #endregion
+
+        #region Encoding/Decoding Functions
+
+        public static string ceasarCipher(string ceasarCipherInput, int ceasarCipherKey)
+        {
+            string ceasarCipherOutput = string.Empty;
+            foreach (char ch in ceasarCipherInput)
+            {
+                ceasarCipherOutput += cipher(ch, ceasarCipherKey);
+
+            }
+            return ceasarCipherOutput;
+        }
+        public static char cipher(char ch, int key)
+        {
+            if (!char.IsLetter(ch))
+            {
+                return ch;
+            }
+
+            char d = char.IsUpper(ch) ? 'A' : 'a';
+            return (char)((((ch + key) - d) % 26) + d);
+        }
+
+        public static string ceasarDecipher(string ceasarDecipherInput, int ceasarDecipherKey)
+        {
+            return ceasarCipher(ceasarDecipherInput, 26 - ceasarDecipherKey);
+        }
+
+        public static string StringToBinary(string data)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (char c in data.ToCharArray())
+            {
+                sb.Append(Convert.ToString(c, 2).PadLeft(8, '0'));
+            }
+            return sb.ToString();
+        }
+
+
+        public static string BinaryToString(string data)
+        {
+            List<Byte> byteList = new List<Byte>();
+
+            for (int i = 0; i < data.Length; i += 8)
+            {
+                byteList.Add(Convert.ToByte(data.Substring(i, 8), 2));
+            }
+            return Encoding.ASCII.GetString(byteList.ToArray());
+        }
+
         public string BFinterpreter(string input)
         {
             string output = "";
@@ -969,7 +1205,7 @@ namespace Textlow
             int pointer = 0;
             char[] chinput;
             chinput = input.ToCharArray();
-            tape = new byte[30000];
+            tape = new byte[300000];
             var unmatchedBracketCounter = 0;
             for (int i = 0; i < input.Length; i++)
             {
@@ -1037,55 +1273,6 @@ namespace Textlow
 
         }
 
-
-        private void brainFuckToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            richTextBox1.Text = BFinterpreter(richTextBox1.Text);
-
-        }
-
-        private void brainFuckToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            string brfToS;
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Title = "Wybierz plik do otwarcia:";
-            if (openFile.ShowDialog() == DialogResult.OK)
-            {
-
-                using (StreamReader sr = new StreamReader(openFile.FileName))
-                {
-                    brfToS = sr.ReadToEnd();
-
-                    richTextBox1.Clear();
-                    richTextBox1.Text = BFinterpreter(brfToS);
-
-
-                    sr.Close();
-                }
-            }
-        }
-
-        private void brainFuckToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            bool isAscii = true;
-            foreach (char c in richTextBox1.Text)
-            {
-                if (c > 127)
-                {
-                    isAscii = false;
-                }
-            }
-            if (isAscii)
-            {
-                richTextBox1.Text = strToBf(richTextBox1.Text);
-            }
-            else
-            {
-
-                MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na BrainFuck.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
-            }
-
-        }
         public static string strToBf(string input)
         {
             string s = "++++++++++" + "[";
@@ -1153,46 +1340,6 @@ namespace Textlow
             return i - t;
         }
 
-        private void brainFuckToolStripMenuItem3_Click(object sender, EventArgs e)
-        {
-            bool isAscii = true;
-            foreach (char c in richTextBox1.Text)
-            {
-                if (c > 127)
-                {
-                    isAscii = false;
-                }
-            }
-            if (isAscii)
-            {
-                saveAs(strToBf(richTextBox1.Text));
-            }
-            else
-            {
-
-                MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na BrainFuck.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
-            }
-        }
-
-        private void tripleDESToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string value = "";
-            if (InputBox("Podaj klucz", "Podaj własny klucz:", ref value) == DialogResult.OK)
-            {
-                richTextBox1.Text = tDESEncrypt(richTextBox1.Text, value);
-            }
-        }
-
-        private void tripleDESToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            string value = "";
-            if (InputBox("Podaj klucz", "Podaj własny klucz:", ref value) == DialogResult.OK)
-            {
-
-                richTextBox1.Text = tDESDecrypt(richTextBox1.Text, value);
-
-            }
-        }
         public static string tDESEncrypt(string toEncrypt, string enkey)
         {
             byte[] keyArray;
@@ -1227,38 +1374,124 @@ namespace Textlow
             tdes.Clear();
             return UTF8Encoding.UTF8.GetString(resultArray);
         }
+        #endregion
 
-        private void tripleDESToolStripMenuItem2_Click(object sender, EventArgs e)
+        #region Actions
+        private void saveAs(string textToSave)
         {
-            string value = "";
-            if (InputBox("Podaj klucz", "Podaj własny klucz:", ref value) == DialogResult.OK)
+
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.Title = "Zapisz plik jako:";
+            saveFile.Filter = txt + tl + all + html + css + js + json + rtf + bat + sh + fas + ada + asm + mib + asp + au3 + avs + bc + bb + bf + c + ml + cmake + cbl + orc + coffee + cpp + cs + d + diff + erl + src + forth + f + f77 + bi + hs + ini + iss + hex + java + jsp + kix + lsp + tex + lua + mak + m + mms + nim + tab + nfo + nsh + osx + mm + pp + pl + php + ps + ps1 + properties + pb + py + r + reb + reg + rc + rb + rs + scm + st + scp + sql + mot + swift + tcl + tek + vb + t2t + v + vhd + pro + xml + yaml;
+            if (saveFile.ShowDialog() == DialogResult.OK)
             {
-                string tDesString;
-                OpenFileDialog openFile = new OpenFileDialog();
-                openFile.Title = "Wybierz plik do otwarcia:";
-                if (openFile.ShowDialog() == DialogResult.OK)
+                StreamWriter textoutput = new StreamWriter(saveFile.FileName);
+                textoutput.Write(textToSave);
+                textoutput.Close();
+            }
+        }
+        private void openFile()
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Title = "Wybierz plik do otwarcia:";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                richTextBox1.Clear();
+                using (StreamReader sr = new StreamReader(openFile.FileName))
                 {
-
-                    using (StreamReader sr = new StreamReader(openFile.FileName))
-                    {
-                        tDesString = sr.ReadToEnd();
-
-                        richTextBox1.Text = tDESDecrypt(tDesString, value);
-                        sr.Close();
-                    }
+                    richTextBox1.Text = sr.ReadToEnd();
+                    sr.Close();
                 }
             }
         }
 
-        private void tripleDESToolStripMenuItem3_Click(object sender, EventArgs e)
+        private void resetColors()
         {
-            string value = "";
-            if (InputBox("Podaj klucz", "Podaj własny klucz:", ref value) == DialogResult.OK)
+            richTextBox1.SelectAll();
+            richTextBox1.SelectionBackColor = bgColor;
+            richTextBox1.SelectionColor = richTextBox1.ForeColor;
+            richTextBox1.DeselectAll();
+        }
+        #endregion
+
+        #region Controls
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            line = 1 + richTextBox1.GetLineFromCharIndex(richTextBox1.GetFirstCharIndexOfCurrentLine());
+            column = 1 + richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexOfCurrentLine();
+            toolStripStatusLabel1.Text = "Wiersz: " + line.ToString() + " | Kolumna: " + column.ToString();
+            toolStripStatusLabel1.Margin = new Padding(0, 3, statusStrip1.Width - toolStripStatusLabel2.Width - 270, 2);
+            int words;
+            switch (richTextBox1.Text)
             {
-                saveAs(tDESEncrypt(richTextBox1.Text, value));
+                case "":
+                    words = 0;
+                    break;
+                default:
+                    MatchCollection wordColl = Regex.Matches(richTextBox1.Text, @"[\W]+");
+                    words = wordColl.Count + 1;
+                    break;
             }
+
+            toolStripStatusLabel2.Text = "Znaków: " + richTextBox1.Text.Length.ToString() + " | Słów: " + words;
+
         }
 
-        
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString(richTextBox1.Text, richTextBox1.Font, Brushes.Black, new PointF(100, 100));
+
+        }
+        #endregion
+
+        #region Declarations
+        Color bgColor = new Color();
+        SpeechSynthesizer voice = new SpeechSynthesizer();
+        #endregion
+
+        #region Extra
+        public static DialogResult InputBox(string title, string promptText, ref string value)
+        {
+            Form form = new Form();
+            Label label = new Label();
+            TextBox textBox = new TextBox();
+            Button buttonOk = new Button();
+            Button buttonCancel = new Button();
+
+            form.Text = title;
+            label.Text = promptText;
+            textBox.Text = value;
+
+            buttonOk.Text = "OK";
+            buttonCancel.Text = "Anuluj";
+            buttonOk.DialogResult = DialogResult.OK;
+            buttonCancel.DialogResult = DialogResult.Cancel;
+
+            label.SetBounds(9, 20, 372, 13);
+            textBox.SetBounds(12, 36, 372, 20);
+            buttonOk.SetBounds(228, 72, 75, 23);
+            buttonCancel.SetBounds(309, 72, 75, 23);
+
+            label.AutoSize = true;
+            textBox.Anchor = textBox.Anchor | AnchorStyles.Right;
+            buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+
+            form.ClientSize = new Size(396, 107);
+            form.Controls.AddRange(new Control[] { label, textBox, buttonOk, buttonCancel });
+            form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MinimizeBox = false;
+            form.MaximizeBox = false;
+            form.AcceptButton = buttonOk;
+            form.CancelButton = buttonCancel;
+
+            DialogResult dialogResult = form.ShowDialog();
+            value = textBox.Text;
+            return dialogResult;
+        }
+        #endregion
+
     }
 }
