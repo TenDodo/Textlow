@@ -116,6 +116,14 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.owncodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.questionMarkCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.owncodeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.questionMarkCodeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.owncodeToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.questionMarkCodeToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.owncodeToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.questionMarkCodeToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -186,7 +194,8 @@
             this.szyfrCezaraZWlasnymKluczemToolStripMenuItem1,
             this.binariaToolStripMenuItem1,
             this.brainFuckToolStripMenuItem1,
-            this.tripleDESToolStripMenuItem2});
+            this.tripleDESToolStripMenuItem2,
+            this.owncodeToolStripMenuItem3});
             this.otworzZaszyfrowanyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("otworzZaszyfrowanyToolStripMenuItem.Image")));
             this.otworzZaszyfrowanyToolStripMenuItem.Name = "otworzZaszyfrowanyToolStripMenuItem";
             this.otworzZaszyfrowanyToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
@@ -248,7 +257,8 @@
             this.szyfrCezaraZWlasnymKluczemToolStripMenuItem,
             this.binariaToolStripMenuItem,
             this.brainFuckToolStripMenuItem3,
-            this.tripleDESToolStripMenuItem3});
+            this.tripleDESToolStripMenuItem3,
+            this.owncodeToolStripMenuItem2});
             this.zapiszJakoZaszyfrowanyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("zapiszJakoZaszyfrowanyToolStripMenuItem.Image")));
             this.zapiszJakoZaszyfrowanyToolStripMenuItem.Name = "zapiszJakoZaszyfrowanyToolStripMenuItem";
             this.zapiszJakoZaszyfrowanyToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
@@ -652,13 +662,13 @@
             this.szyfrCezaraZWlasnymKluczemToolStripMenuItem2,
             this.binariaToolStripMenuItem2,
             this.brainFuckToolStripMenuItem2,
-            this.tripleDESToolStripMenuItem});
+            this.tripleDESToolStripMenuItem,
+            this.owncodeToolStripMenuItem});
             this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
             this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton1.Name = "toolStripSplitButton1";
             this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 22);
-            this.toolStripSplitButton1.Text = "Zaszyfruj tutaj";
-
+            this.toolStripSplitButton1.Text = "Zaszyfruj Tutaj";
             // 
             // szyfrCezaraToolStripMenuItem2
             // 
@@ -703,7 +713,8 @@
             this.szyfrCezaraZWlasnymKluczemToolStripMenuItem3,
             this.binariaToolStripMenuItem3,
             this.brainFuckToolStripMenuItem,
-            this.tripleDESToolStripMenuItem1});
+            this.tripleDESToolStripMenuItem1,
+            this.owncodeToolStripMenuItem1});
             this.toolStripSplitButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton2.Image")));
             this.toolStripSplitButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton2.Name = "toolStripSplitButton2";
@@ -870,6 +881,66 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // owncodeToolStripMenuItem
+            // 
+            this.owncodeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.questionMarkCodeToolStripMenuItem});
+            this.owncodeToolStripMenuItem.Name = "owncodeToolStripMenuItem";
+            this.owncodeToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.owncodeToolStripMenuItem.Text = "Szyfrowanie Własne";
+            // 
+            // questionMarkCodeToolStripMenuItem
+            // 
+            this.questionMarkCodeToolStripMenuItem.Name = "questionMarkCodeToolStripMenuItem";
+            this.questionMarkCodeToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.questionMarkCodeToolStripMenuItem.Text = "Question Mark code";
+            this.questionMarkCodeToolStripMenuItem.Click += new System.EventHandler(this.questionMarkCodeToolStripMenuItem_Click);
+            // 
+            // owncodeToolStripMenuItem1
+            // 
+            this.owncodeToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.questionMarkCodeToolStripMenuItem1});
+            this.owncodeToolStripMenuItem1.Name = "owncodeToolStripMenuItem1";
+            this.owncodeToolStripMenuItem1.Size = new System.Drawing.Size(242, 22);
+            this.owncodeToolStripMenuItem1.Text = "Szyfrowanie Własne";
+            // 
+            // questionMarkCodeToolStripMenuItem1
+            // 
+            this.questionMarkCodeToolStripMenuItem1.Name = "questionMarkCodeToolStripMenuItem1";
+            this.questionMarkCodeToolStripMenuItem1.Size = new System.Drawing.Size(181, 22);
+            this.questionMarkCodeToolStripMenuItem1.Text = "Question Mark code";
+            this.questionMarkCodeToolStripMenuItem1.Click += new System.EventHandler(this.questionMarkCodeToolStripMenuItem1_Click);
+            // 
+            // owncodeToolStripMenuItem2
+            // 
+            this.owncodeToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.questionMarkCodeToolStripMenuItem2});
+            this.owncodeToolStripMenuItem2.Name = "owncodeToolStripMenuItem2";
+            this.owncodeToolStripMenuItem2.Size = new System.Drawing.Size(242, 22);
+            this.owncodeToolStripMenuItem2.Text = "Szyfrowanie Własne";
+            // 
+            // questionMarkCodeToolStripMenuItem2
+            // 
+            this.questionMarkCodeToolStripMenuItem2.Name = "questionMarkCodeToolStripMenuItem2";
+            this.questionMarkCodeToolStripMenuItem2.Size = new System.Drawing.Size(181, 22);
+            this.questionMarkCodeToolStripMenuItem2.Text = "Question Mark code";
+            this.questionMarkCodeToolStripMenuItem2.Click += new System.EventHandler(this.questionMarkCodeToolStripMenuItem2_Click);
+            // 
+            // owncodeToolStripMenuItem3
+            // 
+            this.owncodeToolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.questionMarkCodeToolStripMenuItem3});
+            this.owncodeToolStripMenuItem3.Name = "owncodeToolStripMenuItem3";
+            this.owncodeToolStripMenuItem3.Size = new System.Drawing.Size(242, 22);
+            this.owncodeToolStripMenuItem3.Text = "Szyfrowanie Własne";
+            // 
+            // questionMarkCodeToolStripMenuItem3
+            // 
+            this.questionMarkCodeToolStripMenuItem3.Name = "questionMarkCodeToolStripMenuItem3";
+            this.questionMarkCodeToolStripMenuItem3.Size = new System.Drawing.Size(181, 22);
+            this.questionMarkCodeToolStripMenuItem3.Text = "Question Mark code";
+            this.questionMarkCodeToolStripMenuItem3.Click += new System.EventHandler(this.questionMarkCodeToolStripMenuItem3_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -984,6 +1055,14 @@
         private System.Windows.Forms.ToolStripButton toolStripButton10;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripButton toolStripButton11;
+        private System.Windows.Forms.ToolStripMenuItem owncodeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem questionMarkCodeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem owncodeToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem questionMarkCodeToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem owncodeToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem questionMarkCodeToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem owncodeToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem questionMarkCodeToolStripMenuItem3;
     }
 }
 

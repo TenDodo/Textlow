@@ -163,17 +163,25 @@ namespace Textlow
             {
                 System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
             }
+            else if (!true)
+            {
+                richTextBox1.Text = "Prosze nie patrzeć do sekretów!";
+            }
+            else if (richTextBox1.Text == "give me some fanfics")
+            {
+                richTextBox1.Text = "no";
+            }
             else if (richTextBox1.Text == "allstar" || richTextBox1.Text == "all star")
             {
                 System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=L_jWHffIx5E");
-            }
-            else if (richTextBox1.Text == "Adrian Hajdun")
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=BKpGCsToSe8");
-            }
+            }           
             else if (richTextBox1.Text == "taskmgr" || richTextBox1.Text == "taskmanager" || richTextBox1.Text == "task manager")
             {
                 System.Diagnostics.Process.Start("taskmgr");
+            }
+            else if (richTextBox1.Text == "calc")
+            {
+                System.Diagnostics.Process.Start("calc");
             }
             else if (richTextBox1.Text == "⠀")
             {
@@ -183,7 +191,7 @@ namespace Textlow
             {
                 System.Diagnostics.Process.Start("cmd");
             }
-            else if (richTextBox1.Text == "sans granie")
+            else if (richTextBox1.Text == "Sans Granie")
             {
                 System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=R8uK9bjME6Y");
             }
@@ -218,8 +226,6 @@ namespace Textlow
             else if (richTextBox1.Text == "bruh")
             {
                 System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=TKvjEQXKeec");
-                richTextBox1.Text = "what";
-                richTextBox1.Font = new Font(richTextBox1.Font.Name, 200, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
             }
             else if (richTextBox1.Text == "btw i use arch" || richTextBox1.Text == "i use arch btw")
             {
@@ -925,6 +931,80 @@ namespace Textlow
 
 
         }
+
+        public static string BinToQMc(string bin)
+        {
+            string mfinal = String.Empty;
+            Random rand = new Random();
+            for (int i = 0; i < 4; i++)
+            {
+                int ia = rand.Next(1, 10);
+                switch (ia < 5)
+                {
+                    case true:
+                        mfinal += " ";
+                        break;
+                    case false:
+                        mfinal += "?";
+                        break;
+                }
+            }
+            int j = 0;
+            string tmp = "";
+            foreach (char ch in bin)
+            {
+                j++;
+                tmp += ch;
+                switch (j == 2)
+                {
+                    case true:
+                        j = 0;
+                        int ja = rand.Next(1, 10);
+                        switch (ja < 5)
+                        {
+                            case true:
+                                mfinal += " ";
+                                break;
+                            case false:
+                                mfinal += "?";
+                                break;
+                        }
+                        switch (tmp)
+                        {
+                            case "00":
+                                mfinal += "??";
+                                break;
+                            case "01":
+                                mfinal += " ?";
+                                break;
+                            case "10":
+                                mfinal += "  ";
+                                break;
+                            case "11":
+                                mfinal += "? ";
+                                break;
+                        }
+                        int jb = rand.Next(1, 10);
+                        switch (jb < 5)
+                        {
+                            case true:
+                                mfinal += " ";
+                                break;
+                            case false:
+                                mfinal += "?";
+                                break;
+                        }
+                        tmp = "";
+                        break;
+                    case false:
+                        break;
+                }
+            }
+            string g1final = mfinal.Replace(" ", " | ");
+            string g2final = g1final.Replace(" |  | ", "-");
+            string g3final = g2final.Replace("--", "+");
+            return g3final;
+        }
         #endregion
 
         #region Decoding
@@ -1144,6 +1224,103 @@ namespace Textlow
                 richTextBox1.Text = tDESDecrypt(richTextBox1.Text, value);
 
             }
+        }
+        public static string QMcToBin(string qmc)
+        {
+            string g3qmc = "";
+            foreach (char g3ch in qmc)
+            {
+                switch (g3ch)
+                {
+                    case '+':
+                        g3qmc += "--";
+                        break;
+                    default:
+                        g3qmc += g3ch;
+                        break;
+                }
+
+            }
+            string g2qmc = "";
+            foreach (char g2ch in g3qmc)
+            {
+                switch (g2ch)
+                {
+                    case '-':
+                        g2qmc += " |  | ";
+                        break;
+                    default:
+                        g2qmc += g2ch;
+                        break;
+                }
+            }
+            string tqmc = "";
+            foreach (char gch in g2qmc)
+            {
+                switch (gch)
+                {
+                    case '?':
+                        tqmc += "?";
+                        break;
+                    case ' ':
+                        break;
+                    case '|':
+                        tqmc += " ";
+                        break;
+
+                }
+            }
+            int nloop = 0;
+            int mloop = 0;
+            string tmp = "";
+            string bin = "";
+            foreach (char ch in tqmc)
+            {
+                nloop++;
+                mloop++;
+                switch (nloop)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        tmp += ch;
+                        break;
+                    case 3:
+                        tmp += ch;
+                        break;
+                    case 4:
+                        nloop = 0;
+                        switch (mloop == 4)
+                        {
+                            case true:
+                                tmp = "";
+                                break;
+                            case false:
+                                switch (tmp)
+                                {
+                                    case "??":
+                                        bin += "00";
+                                        tmp = "";
+                                        break;
+                                    case " ?":
+                                        bin += "01";
+                                        tmp = "";
+                                        break;
+                                    case "  ":
+                                        bin += "10";
+                                        tmp = "";
+                                        break;
+                                    case "? ":
+                                        bin += "11";
+                                        tmp = "";
+                                        break;
+                                }
+                                break;
+                        }
+                        break;
+                }
+            }
+            return bin;
         }
         #endregion
 
@@ -1493,5 +1670,182 @@ namespace Textlow
         }
         #endregion
 
+        private void questionMarkCodeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.Text.Length > 50000)
+            {
+                if (MessageBox.Show("Tekst który próbujesz zaszyfrować może okazać się zbyt długi. Kontynuowanie może spowodować zatrzymanie pracy programu. Czy chcesz kontynuować?", "Duża ilość znaków", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    bool isAscii = true;
+                    foreach (char c in richTextBox1.Text)
+                    {
+                        if (c > 127)
+                        {
+                            isAscii = false;
+                        }
+                    }
+                    if (isAscii)
+                    {
+                        string bin = StringToBinary(richTextBox1.Text);
+                        string final = BinToQMc(bin);
+                        richTextBox1.Text = final;
+
+
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                    }
+                }
+            }
+            else
+            {
+                bool isAscii = true;
+                foreach (char c in richTextBox1.Text)
+                {
+                    if (c > 127)
+                    {
+                        isAscii = false;
+                    }
+                }
+                if (isAscii)
+                {
+                    string bin = StringToBinary(richTextBox1.Text);
+                    string final = BinToQMc(bin);
+                    richTextBox1.Text = final;
+                }
+                else
+                {
+
+                    MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                }
+            }
+        }
+
+
+
+
+        private void questionMarkCodeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            string bin = QMcToBin(richTextBox1.Text);
+
+            string binToS;
+
+            binToS = bin;
+            bool isBinary = true;
+            foreach (char ch in binToS)
+            {
+                if (ch != '0' && ch != '1')
+                {
+                    isBinary = false;
+                }
+            }
+            if (isBinary)
+            {
+                richTextBox1.Text = BinaryToString(binToS);
+            }
+            else
+            {
+                MessageBox.Show("Plik zawiera znaki inne niż binaria.\nPlik nie może zostać otwarty.");
+            }
+
+
+
+        }
+
+        private void questionMarkCodeToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.Text.Length > 50000)
+            {
+                if (MessageBox.Show("Tekst który próbujesz zaszyfrować może okazać się zbyt długi. Kontynuowanie może spowodować zatrzymanie pracy programu. Czy chcesz kontynuować?", "Duża ilość znaków", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    bool isAscii = true;
+                    foreach (char c in richTextBox1.Text)
+                    {
+                        if (c > 127)
+                        {
+                            isAscii = false;
+                        }
+                    }
+                    if (isAscii)
+                    {
+                        string bin = StringToBinary(richTextBox1.Text);
+                        string final = BinToQMc(bin);
+                        saveAs(final);
+
+
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                    }
+                }
+            }
+            else
+            {
+                bool isAscii = true;
+                foreach (char c in richTextBox1.Text)
+                {
+                    if (c > 127)
+                    {
+                        isAscii = false;
+                    }
+                }
+                if (isAscii)
+                {
+                    string bin = StringToBinary(richTextBox1.Text);
+                    string final = BinToQMc(bin);
+                    saveAs(final);
+                }
+                else
+                {
+
+                    MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                }
+            }
+        }
+
+        private void questionMarkCodeToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Title = "Wybierz plik do otwarcia:";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                string text;
+                using (StreamReader sr = new StreamReader(openFile.FileName))
+                {
+                    text = sr.ReadToEnd();
+
+                    
+                    sr.Close();
+                }
+                string bin = QMcToBin(text);
+
+                string binToS;
+
+                binToS = bin;
+                bool isBinary = true;
+                foreach (char ch in binToS)
+                {
+                    if (ch != '0' && ch != '1')
+                    {
+                        isBinary = false;
+                    }
+                }
+                if (isBinary)
+                {
+                    richTextBox1.Text = BinaryToString(binToS);
+                }
+                else
+                {
+                    MessageBox.Show("Plik zawiera znaki inne niż binaria.\nPlik nie może zostać otwarty.");
+                }
+
+            }
+            
+        }
     }
 }
