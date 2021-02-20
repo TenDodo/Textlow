@@ -15,6 +15,7 @@ using System.Speech;
 using System.Speech.Synthesis;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
+using System.Globalization;
 #endregion
 namespace Textlow
 {
@@ -174,7 +175,7 @@ namespace Textlow
             else if (richTextBox1.Text == "allstar" || richTextBox1.Text == "all star")
             {
                 System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=L_jWHffIx5E");
-            }           
+            }
             else if (richTextBox1.Text == "taskmgr" || richTextBox1.Text == "taskmanager" || richTextBox1.Text == "task manager")
             {
                 System.Diagnostics.Process.Start("taskmgr");
@@ -305,7 +306,7 @@ namespace Textlow
             int start = 0;
             int end = richTextBox1.Text.LastIndexOf(toolStripTextBox1.Text);
 
-            while (start < end)
+            while (start <= end)
             {
                 richTextBox1.Find(toolStripTextBox1.Text, start, richTextBox1.TextLength, RichTextBoxFinds.MatchCase);
                 richTextBox1.SelectionBackColor = Color.Blue;
@@ -324,6 +325,86 @@ namespace Textlow
         {
             info form2 = new info();
             form2.Show();
+        }
+
+        private void questionMarkCodeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.Text.Length > 50000)
+            {
+                if (MessageBox.Show("Tekst który próbujesz zaszyfrować może okazać się zbyt długi. Kontynuowanie może spowodować zatrzymanie pracy programu. Czy chcesz kontynuować?", "Duża ilość znaków", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    bool isAscii = true;
+                    foreach (char c in richTextBox1.Text)
+                    {
+                        if (c > 127)
+                        {
+                            isAscii = false;
+                        }
+                    }
+                    if (isAscii)
+                    {
+                        string bin = StringToBinary(richTextBox1.Text);
+                        string final = BinToQMc(bin);
+                        richTextBox1.Text = final;
+
+
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                    }
+                }
+            }
+            else
+            {
+                bool isAscii = true;
+                foreach (char c in richTextBox1.Text)
+                {
+                    if (c > 127)
+                    {
+                        isAscii = false;
+                    }
+                }
+                if (isAscii)
+                {
+                    string bin = StringToBinary(richTextBox1.Text);
+                    string final = BinToQMc(bin);
+                    richTextBox1.Text = final;
+                }
+                else
+                {
+
+                    MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                }
+            }
+        }
+        private void questionMarkCodeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            string bin = QMcToBin(richTextBox1.Text);
+
+            string binToS;
+
+            binToS = bin;
+            bool isBinary = true;
+            foreach (char ch in binToS)
+            {
+                if (ch != '0' && ch != '1')
+                {
+                    isBinary = false;
+                }
+            }
+            if (isBinary)
+            {
+                richTextBox1.Text = BinaryToString(binToS);
+            }
+            else
+            {
+                MessageBox.Show("Plik zawiera znaki inne niż binaria.\nPlik nie może zostać otwarty.");
+            }
+
+
+
         }
         #endregion
 
@@ -433,6 +514,268 @@ namespace Textlow
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             richTextBox1.Paste();
+        }
+
+        private void questionMarkCodeToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.Text.Length > 50000)
+            {
+                if (MessageBox.Show("Tekst który próbujesz zaszyfrować może okazać się zbyt długi. Kontynuowanie może spowodować zatrzymanie pracy programu. Czy chcesz kontynuować?", "Duża ilość znaków", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    bool isAscii = true;
+                    foreach (char c in richTextBox1.Text)
+                    {
+                        if (c > 127)
+                        {
+                            isAscii = false;
+                        }
+                    }
+                    if (isAscii)
+                    {
+                        string bin = StringToBinary(richTextBox1.Text);
+                        string final = BinToQMc(bin);
+                        saveAs(final);
+
+
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                    }
+                }
+            }
+            else
+            {
+                bool isAscii = true;
+                foreach (char c in richTextBox1.Text)
+                {
+                    if (c > 127)
+                    {
+                        isAscii = false;
+                    }
+                }
+                if (isAscii)
+                {
+                    string bin = StringToBinary(richTextBox1.Text);
+                    string final = BinToQMc(bin);
+                    saveAs(final);
+                }
+                else
+                {
+
+                    MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                }
+            }
+        }
+
+        private void questionMarkCodeToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Title = "Wybierz plik do otwarcia:";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                string text;
+                using (StreamReader sr = new StreamReader(openFile.FileName))
+                {
+                    text = sr.ReadToEnd();
+
+
+                    sr.Close();
+                }
+                string bin = QMcToBin(text);
+
+                string binToS;
+
+                binToS = bin;
+                bool isBinary = true;
+                foreach (char ch in binToS)
+                {
+                    if (ch != '0' && ch != '1')
+                    {
+                        isBinary = false;
+                    }
+                }
+                if (isBinary)
+                {
+                    richTextBox1.Text = BinaryToString(binToS);
+                }
+                else
+                {
+                    MessageBox.Show("Plik zawiera znaki inne niż binaria.\nPlik nie może zostać otwarty.");
+                }
+
+            }
+
+        }
+        private void adixTablesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.Text.Length > 50000)
+            {
+                if (MessageBox.Show("Tekst który próbujesz zaszyfrować może okazać się zbyt długi. Kontynuowanie może spowodować zatrzymanie pracy programu. Czy chcesz kontynuować?", "Duża ilość znaków", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    bool isAscii = true;
+                    foreach (char c in richTextBox1.Text)
+                    {
+                        if (c > 127)
+                        {
+                            isAscii = false;
+                        }
+                    }
+                    if (isAscii)
+                    {
+                        string bin = StringToBinary(richTextBox1.Text);
+                        string final = binToAT(bin);
+                        richTextBox1.Text = final;
+
+
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                    }
+                }
+            }
+            else
+            {
+                bool isAscii = true;
+                foreach (char c in richTextBox1.Text)
+                {
+                    if (c > 127)
+                    {
+                        isAscii = false;
+                    }
+                }
+                if (isAscii)
+                {
+                    string bin = StringToBinary(richTextBox1.Text);
+                    string final = binToAT(bin);
+                    richTextBox1.Text = final;
+                }
+                else
+                {
+
+                    MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                }
+            }
+        }
+        private void adixTablesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            string bin = ATToBin(richTextBox1.Text);
+
+            string binToS;
+
+            binToS = bin;
+            bool isBinary = true;
+            foreach (char ch in binToS)
+            {
+                if (ch != '0' && ch != '1')
+                {
+                    isBinary = false;
+                }
+            }
+            if (isBinary)
+            {
+                richTextBox1.Text = BinaryToString(binToS);
+            }
+            else
+            {
+                MessageBox.Show("Plik zawiera znaki inne niż binaria.\nPlik nie może zostać otwarty.");
+            }
+        }
+
+        private void adixTablesToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.Text.Length > 50000)
+            {
+                if (MessageBox.Show("Tekst który próbujesz zaszyfrować może okazać się zbyt długi. Kontynuowanie może spowodować zatrzymanie pracy programu. Czy chcesz kontynuować?", "Duża ilość znaków", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    bool isAscii = true;
+                    foreach (char c in richTextBox1.Text)
+                    {
+                        if (c > 127)
+                        {
+                            isAscii = false;
+                        }
+                    }
+                    if (isAscii)
+                    {
+                        string bin = StringToBinary(richTextBox1.Text);
+                        string final = binToAT(bin);
+                        saveAs(final);
+
+
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                    }
+                }
+            }
+            else
+            {
+                bool isAscii = true;
+                foreach (char c in richTextBox1.Text)
+                {
+                    if (c > 127)
+                    {
+                        isAscii = false;
+                    }
+                }
+                if (isAscii)
+                {
+                    string bin = StringToBinary(richTextBox1.Text);
+                    string final = binToAT(bin);
+                    saveAs(final);
+                }
+                else
+                {
+
+                    MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                }
+            }
+        }
+
+        private void adixTablesToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Title = "Wybierz plik do otwarcia:";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                string text;
+                using (StreamReader sr = new StreamReader(openFile.FileName))
+                {
+                    text = sr.ReadToEnd();
+
+
+                    sr.Close();
+                }
+                string bin = ATToBin(text);
+
+                string binToS;
+
+                binToS = bin;
+                bool isBinary = true;
+                foreach (char ch in binToS)
+                {
+                    if (ch != '0' && ch != '1')
+                    {
+                        isBinary = false;
+                    }
+                }
+                if (isBinary)
+                {
+                    richTextBox1.Text = BinaryToString(binToS);
+                }
+                else
+                {
+                    MessageBox.Show("Plik zawiera znaki inne niż binaria.\nPlik nie może zostać otwarty.");
+                }
+
+            }
         }
         #endregion
 
@@ -609,7 +952,7 @@ namespace Textlow
             {
                 int customCeasarKey;
                 string value = "0";
-                if (InputBox("Podaj klucz", "Podaj własny klucz (cyfra od 1 do 25):", ref value) == DialogResult.OK)
+                if (InputBox("Podaj klucz", "OK", "Podaj własny klucz (cyfra od 1 do 25):", ref value) == DialogResult.OK)
                 {
                     try
                     {
@@ -679,7 +1022,7 @@ namespace Textlow
         private void tripleDESToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             string value = "";
-            if (InputBox("Podaj klucz", "Podaj własny klucz:", ref value) == DialogResult.OK)
+            if (InputBox("Podaj klucz", "OK", "Podaj własny klucz:", ref value) == DialogResult.OK)
             {
                 saveAs(tDESEncrypt(richTextBox1.Text, value));
             }
@@ -748,7 +1091,7 @@ namespace Textlow
                     {
                         int customCeasarKey;
                         string value = "0";
-                        if (InputBox("Podaj klucz", "Podaj własny klucz (cyfra od 1 do 25):", ref value) == DialogResult.OK)
+                        if (InputBox("Podaj klucz", "OK", "Podaj własny klucz (cyfra od 1 do 25):", ref value) == DialogResult.OK)
                         {
                             try
                             {
@@ -786,7 +1129,7 @@ namespace Textlow
                 {
                     int customCeasarKey;
                     string value = "0";
-                    if (InputBox("Podaj klucz", "Podaj własny klucz (cyfra od 1 do 25):", ref value) == DialogResult.OK)
+                    if (InputBox("Podaj klucz", "OK", "Podaj własny klucz (cyfra od 1 do 25):", ref value) == DialogResult.OK)
                     {
                         try
                         {
@@ -914,7 +1257,7 @@ namespace Textlow
                 if (MessageBox.Show("Tekst który próbujesz zaszyfrować może okazać się zbyt długi. Kontynuowanie może spowodować zatrzymanie pracy programu. Czy chcesz kontynuować?", "Duża ilość znaków", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     string value = "";
-                    if (InputBox("Podaj klucz", "Podaj własny klucz:", ref value) == DialogResult.OK)
+                    if (InputBox("Podaj klucz", "OK", "Podaj własny klucz:", ref value) == DialogResult.OK)
                     {
                         richTextBox1.Text = tDESEncrypt(richTextBox1.Text, value);
                     }
@@ -923,7 +1266,7 @@ namespace Textlow
             else
             {
                 string value = "";
-                if (InputBox("Podaj klucz", "Podaj własny klucz:", ref value) == DialogResult.OK)
+                if (InputBox("Podaj klucz", "OK", "Podaj własny klucz:", ref value) == DialogResult.OK)
                 {
                     richTextBox1.Text = tDESEncrypt(richTextBox1.Text, value);
                 }
@@ -1029,7 +1372,7 @@ namespace Textlow
         {
             int customCeasarKey;
             string value = "0";
-            if (InputBox("Podaj klucz", "Podaj własny klucz (cyfra od 1 do 25):", ref value) == DialogResult.OK)
+            if (InputBox("Podaj klucz", "OK", "Podaj własny klucz (cyfra od 1 do 25):", ref value) == DialogResult.OK)
             {
                 try
                 {
@@ -1119,7 +1462,7 @@ namespace Textlow
         private void tripleDESToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             string value = "";
-            if (InputBox("Podaj klucz", "Podaj własny klucz:", ref value) == DialogResult.OK)
+            if (InputBox("Podaj klucz", "OK", "Podaj własny klucz:", ref value) == DialogResult.OK)
             {
                 string tDesString;
                 OpenFileDialog openFile = new OpenFileDialog();
@@ -1156,7 +1499,7 @@ namespace Textlow
 
             int customCeasarKey;
             string value = "0";
-            if (InputBox("Podaj klucz", "Podaj własny klucz (cyfra od 1 do 25):", ref value) == DialogResult.OK)
+            if (InputBox("Podaj klucz", "OK", "Podaj własny klucz (cyfra od 1 do 25):", ref value) == DialogResult.OK)
             {
                 try
                 {
@@ -1218,7 +1561,7 @@ namespace Textlow
         private void tripleDESToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             string value = "";
-            if (InputBox("Podaj klucz", "Podaj własny klucz:", ref value) == DialogResult.OK)
+            if (InputBox("Podaj klucz", "OK", "Podaj własny klucz:", ref value) == DialogResult.OK)
             {
 
                 richTextBox1.Text = tDESDecrypt(richTextBox1.Text, value);
@@ -1551,6 +1894,115 @@ namespace Textlow
             tdes.Clear();
             return UTF8Encoding.UTF8.GetString(resultArray);
         }
+        private static string binToAT(string bin)
+        {
+            string binAT = "";
+            int loop = 0;
+            int loop2 = 0;
+            foreach (char ch in bin)
+            {
+                loop++;
+                switch (loop)
+                {
+                    case 1:
+                        switch (ch == '0')
+                        {
+                            case true:
+                                binAT += "a";
+                                break;
+                            case false:
+                                binAT += "A";
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch (ch == '0')
+                        {
+                            case true:
+                                binAT += "d";
+                                break;
+                            case false:
+                                binAT += "D";
+                                break;
+                        }
+                        break;
+                    case 3:
+                        switch (ch == '0')
+                        {
+                            case true:
+                                binAT += "i";
+                                break;
+                            case false:
+                                binAT += "I";
+                                break;
+                        }
+                        break;
+                    case 4:
+                        switch (ch == '0')
+                        {
+                            case true:
+                                binAT += "x";
+                                break;
+                            case false:
+                                binAT += "X";
+                                break;
+                        }
+                        loop2++;
+                        switch (loop2 == 10)
+                        {
+                            case true:
+                                binAT += "\n";
+                                loop = 0;
+                                loop2 = 0;
+                                break;
+                            case false:
+                                binAT += " | ";
+                                loop = 0;
+                                break;
+                        }
+
+                        break;
+                }
+            }
+            return binAT;
+        }
+        public static string ATToBin(string at)
+        {
+            string bin = "";
+            foreach (char ch in at)
+            {
+                switch (ch)
+                {
+                    case 'A':
+                        bin += "1";
+                        break;
+                    case 'D':
+                        bin += "1";
+                        break;
+                    case 'I':
+                        bin += "1";
+                        break;
+                    case 'X':
+                        bin += "1";
+                        break;
+                    case 'a':
+                        bin += "0";
+                        break;
+                    case 'd':
+                        bin += "0";
+                        break;
+                    case 'i':
+                        bin += "0";
+                        break;
+                    case 'x':
+                        bin += "0";
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return bin;
+        }
         #endregion
 
         #region Actions
@@ -1627,7 +2079,7 @@ namespace Textlow
         #endregion
 
         #region Extra
-        public static DialogResult InputBox(string title, string promptText, ref string value)
+        public static DialogResult InputBox(string title, string okButtonText, string promptText, ref string value)
         {
             Form form = new Form();
             Label label = new Label();
@@ -1668,184 +2120,175 @@ namespace Textlow
             value = textBox.Text;
             return dialogResult;
         }
+
+
+        public static DialogResult InputBoxDouble(string title, string promptText, string promptText2, ref string value, ref string value2, ref bool regex)
+        {
+            Form form = new Form();
+            Label label = new Label();
+            Label label2 = new Label();
+            TextBox textBox = new TextBox();
+            TextBox textBox2 = new TextBox();
+            Button buttonOk = new Button();
+            Button buttonCancel = new Button();
+            CheckBox checkBox = new CheckBox();
+
+            form.Text = title;
+            label.Text = promptText;
+            label2.Text = promptText2;
+            textBox.Text = value;
+            textBox2.Text = value2;
+
+            buttonOk.Text = "OK";
+            buttonCancel.Text = "Anuluj";
+            checkBox.Text = "Zaawansowane wybieranie tekstu (Regex)";
+            buttonOk.DialogResult = DialogResult.OK;
+            buttonCancel.DialogResult = DialogResult.Cancel;
+
+            label.SetBounds(9, 15, 372, 13);
+            textBox.SetBounds(12, 31, 372, 20);
+            label2.SetBounds(9, 55, 372, 13);
+            textBox2.SetBounds(12, 71, 372, 20);
+            checkBox.SetBounds(12, 95, 372, 20);
+            buttonOk.SetBounds(228, 127, 75, 23);
+            buttonCancel.SetBounds(309, 127, 75, 23);
+
+            label.AutoSize = true;
+            textBox.Anchor = textBox.Anchor | AnchorStyles.Right;
+            label2.AutoSize = true;
+            textBox2.Anchor = textBox.Anchor | AnchorStyles.Right;
+            buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+
+            form.ClientSize = new Size(396, 160);
+            form.Controls.AddRange(new Control[] { label, textBox, label2, textBox2, checkBox, buttonOk, buttonCancel });
+            form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MinimizeBox = false;
+            form.MaximizeBox = false;
+            form.AcceptButton = buttonOk;
+            form.CancelButton = buttonCancel;
+
+            DialogResult dialogResult = form.ShowDialog();
+            value = textBox.Text;
+            value2 = textBox2.Text;
+            regex = checkBox.Checked;
+            return dialogResult;
+        }
+
+
+
+
+
         #endregion
 
-        private void questionMarkCodeToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void toolStripButton12_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.Text.Length > 50000)
+            string val1 = "";
+            string val2 = "";
+            bool regex = false;
+            if (InputBoxDouble("Zamień", "Tekst który będzie zamieniony", "Tekst na który będzie zamieniony", ref val1, ref val2, ref regex) == DialogResult.OK)
             {
-                if (MessageBox.Show("Tekst który próbujesz zaszyfrować może okazać się zbyt długi. Kontynuowanie może spowodować zatrzymanie pracy programu. Czy chcesz kontynuować?", "Duża ilość znaków", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (regex)
                 {
-                    bool isAscii = true;
-                    foreach (char c in richTextBox1.Text)
+                    if (val1 == "")
                     {
-                        if (c > 127)
-                        {
-                            isAscii = false;
-                        }
-                    }
-                    if (isAscii)
-                    {
-                        string bin = StringToBinary(richTextBox1.Text);
-                        string final = BinToQMc(bin);
-                        richTextBox1.Text = final;
-
-
+                        MessageBox.Show("Pierwsze pole nie może pozostać puste");
                     }
                     else
                     {
+                        try
+                        {
+                            //Regex jregex = new Regex(val1);
+                            //Match match = jregex.Match(richTextBox1.Text);
+                            //if (match.Success)
+                            //{
+                            //    richTextBox1.Text = richTextBox1.Text.Replace(match.Value, val2);
+                            //}
 
-                        MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+
+
+                            Regex jregex = new Regex(val1);
+                            Match match = jregex.Match(richTextBox1.Text);
+                            int start = 0;
+                            int end = richTextBox1.Text.LastIndexOf(match.Value);
+
+                            while (start <= end)
+                            {
+                                try
+                                {
+                                    jregex = new Regex(val1);
+                                    match = jregex.Match(richTextBox1.Text.Substring(start));
+                                    if (match.Success)
+                                    {
+                                        richTextBox1.Text = richTextBox1.Text.Replace(match.Value, val2);
+                                    }
+
+                                    start = richTextBox1.Text.IndexOf(match.Value, start) + 1;
+                                }
+                                catch
+                                {
+                                }
+
+                            }
+
+                        }
+                        catch
+                        {                           
+                        }
+                        
+
                     }
-                }
-            }
-            else
-            {
-                bool isAscii = true;
-                foreach (char c in richTextBox1.Text)
-                {
-                    if (c > 127)
-                    {
-                        isAscii = false;
-                    }
-                }
-                if (isAscii)
-                {
-                    string bin = StringToBinary(richTextBox1.Text);
-                    string final = BinToQMc(bin);
-                    richTextBox1.Text = final;
                 }
                 else
                 {
-
-                    MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
-                }
-            }
-        }
-
-
-
-
-        private void questionMarkCodeToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            string bin = QMcToBin(richTextBox1.Text);
-
-            string binToS;
-
-            binToS = bin;
-            bool isBinary = true;
-            foreach (char ch in binToS)
-            {
-                if (ch != '0' && ch != '1')
-                {
-                    isBinary = false;
-                }
-            }
-            if (isBinary)
-            {
-                richTextBox1.Text = BinaryToString(binToS);
-            }
-            else
-            {
-                MessageBox.Show("Plik zawiera znaki inne niż binaria.\nPlik nie może zostać otwarty.");
-            }
-
-
-
-        }
-
-        private void questionMarkCodeToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            if (richTextBox1.Text.Length > 50000)
-            {
-                if (MessageBox.Show("Tekst który próbujesz zaszyfrować może okazać się zbyt długi. Kontynuowanie może spowodować zatrzymanie pracy programu. Czy chcesz kontynuować?", "Duża ilość znaków", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    bool isAscii = true;
-                    foreach (char c in richTextBox1.Text)
+                    if (val1 == "")
                     {
-                        if (c > 127)
-                        {
-                            isAscii = false;
-                        }
-                    }
-                    if (isAscii)
-                    {
-                        string bin = StringToBinary(richTextBox1.Text);
-                        string final = BinToQMc(bin);
-                        saveAs(final);
-
-
+                        MessageBox.Show("Pierwsze pole nie może pozostać puste");
                     }
                     else
                     {
-
-                        MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
+                        richTextBox1.Text = richTextBox1.Text.Replace(val1, val2);
                     }
-                }
-            }
-            else
-            {
-                bool isAscii = true;
-                foreach (char c in richTextBox1.Text)
-                {
-                    if (c > 127)
-                    {
-                        isAscii = false;
-                    }
-                }
-                if (isAscii)
-                {
-                    string bin = StringToBinary(richTextBox1.Text);
-                    string final = BinToQMc(bin);
-                    saveAs(final);
-                }
-                else
-                {
-
-                    MessageBox.Show("Wykryto nieprawidłowy znak w dokumencie. Nie można zamienić na binaria.\nUsuń znaki nie należące do systemu ASCII i spróbuj ponownie.");
                 }
             }
         }
 
-        private void questionMarkCodeToolStripMenuItem3_Click(object sender, EventArgs e)
+        private void toolStripButton13_Click(object sender, EventArgs e)
         {
-
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Title = "Wybierz plik do otwarcia:";
-            if (openFile.ShowDialog() == DialogResult.OK)
+            string text = "";
+            if (InputBox("Zaawansowane wyszukiwanie (Regex)", "Szukaj", "Szablon", ref text) == DialogResult.OK)
             {
-                string text;
-                using (StreamReader sr = new StreamReader(openFile.FileName))
-                {
-                    text = sr.ReadToEnd();
 
+                int start = 0;
+                int end = richTextBox1.Text.LastIndexOf(toolStripTextBox1.Text);
+
+                while (start <= end)
+                {
+                    try
+                    {
+                        Regex jregex = new Regex(text);
+                        Match match = jregex.Match(richTextBox1.Text.Substring(start));
+                        if (match.Success)
+                        {
+                            richTextBox1.Find(match.Value, start, richTextBox1.TextLength, RichTextBoxFinds.MatchCase);
+                            richTextBox1.SelectionBackColor = Color.Blue;
+                            richTextBox1.SelectionColor = Color.Black;
+                        }
+
+                        start = richTextBox1.Text.IndexOf(toolStripTextBox1.Text, start) + 1;
+                    }
+                    catch
+                    {
+                        
+                    }
                     
-                    sr.Close();
                 }
-                string bin = QMcToBin(text);
-
-                string binToS;
-
-                binToS = bin;
-                bool isBinary = true;
-                foreach (char ch in binToS)
-                {
-                    if (ch != '0' && ch != '1')
-                    {
-                        isBinary = false;
-                    }
-                }
-                if (isBinary)
-                {
-                    richTextBox1.Text = BinaryToString(binToS);
-                }
-                else
-                {
-                    MessageBox.Show("Plik zawiera znaki inne niż binaria.\nPlik nie może zostać otwarty.");
-                }
+                richTextBox1.DeselectAll();
 
             }
-            
         }
     }
 }

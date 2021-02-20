@@ -40,14 +40,14 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 39);
+            this.pictureBox1.Size = new System.Drawing.Size(202, 203);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(56, 12);
+            this.label1.Location = new System.Drawing.Point(220, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(152, 26);
             this.label1.TabIndex = 1;
@@ -56,7 +56,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(56, 46);
+            this.linkLabel1.Location = new System.Drawing.Point(220, 47);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(38, 13);
             this.linkLabel1.TabIndex = 2;
@@ -68,10 +68,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(259, 68);
+            this.ClientSize = new System.Drawing.Size(384, 229);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "info";
             this.Text = "O programie";
             this.Load += new System.EventHandler(this.info_Load);

@@ -26,5 +26,7 @@ namespace Textlow
         {
             System.Diagnostics.Process.Start("https://github.com/TenDodo/Textlow");
         }
+
+        
     }
 }

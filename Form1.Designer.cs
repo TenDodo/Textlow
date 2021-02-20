@@ -41,6 +41,9 @@
             this.binariaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.brainFuckToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tripleDESToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.owncodeToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.questionMarkCodeToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.adixTablesToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.saveasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zapiszJakoZaszyfrowanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +52,9 @@
             this.binariaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brainFuckToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.tripleDESToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.owncodeToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.questionMarkCodeToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.adixTablesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -93,12 +99,19 @@
             this.binariaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.brainFuckToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tripleDESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.owncodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.questionMarkCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adixTablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSplitButton2 = new System.Windows.Forms.ToolStripSplitButton();
             this.szyfrCezaraToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.szyfrCezaraZWlasnymKluczemToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.binariaToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.brainFuckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tripleDESToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.owncodeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.questionMarkCodeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.adixTablesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
@@ -107,6 +120,7 @@
             this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -116,14 +130,6 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.owncodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.questionMarkCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.owncodeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.questionMarkCodeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.owncodeToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.questionMarkCodeToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.owncodeToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.questionMarkCodeToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -236,6 +242,29 @@
             this.tripleDESToolStripMenuItem2.Text = "TripleDES";
             this.tripleDESToolStripMenuItem2.Click += new System.EventHandler(this.tripleDESToolStripMenuItem2_Click);
             // 
+            // owncodeToolStripMenuItem3
+            // 
+            this.owncodeToolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.questionMarkCodeToolStripMenuItem3,
+            this.adixTablesToolStripMenuItem3});
+            this.owncodeToolStripMenuItem3.Name = "owncodeToolStripMenuItem3";
+            this.owncodeToolStripMenuItem3.Size = new System.Drawing.Size(242, 22);
+            this.owncodeToolStripMenuItem3.Text = "Szyfrowanie Własne";
+            // 
+            // questionMarkCodeToolStripMenuItem3
+            // 
+            this.questionMarkCodeToolStripMenuItem3.Name = "questionMarkCodeToolStripMenuItem3";
+            this.questionMarkCodeToolStripMenuItem3.Size = new System.Drawing.Size(181, 22);
+            this.questionMarkCodeToolStripMenuItem3.Text = "Question Mark code";
+            this.questionMarkCodeToolStripMenuItem3.Click += new System.EventHandler(this.questionMarkCodeToolStripMenuItem3_Click);
+            // 
+            // adixTablesToolStripMenuItem3
+            // 
+            this.adixTablesToolStripMenuItem3.Name = "adixTablesToolStripMenuItem3";
+            this.adixTablesToolStripMenuItem3.Size = new System.Drawing.Size(181, 22);
+            this.adixTablesToolStripMenuItem3.Text = "Adix Tables";
+            this.adixTablesToolStripMenuItem3.Click += new System.EventHandler(this.adixTablesToolStripMenuItem3_Click);
+            // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
@@ -298,6 +327,29 @@
             this.tripleDESToolStripMenuItem3.Size = new System.Drawing.Size(242, 22);
             this.tripleDESToolStripMenuItem3.Text = "TripleDES";
             this.tripleDESToolStripMenuItem3.Click += new System.EventHandler(this.tripleDESToolStripMenuItem3_Click);
+            // 
+            // owncodeToolStripMenuItem2
+            // 
+            this.owncodeToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.questionMarkCodeToolStripMenuItem2,
+            this.adixTablesToolStripMenuItem2});
+            this.owncodeToolStripMenuItem2.Name = "owncodeToolStripMenuItem2";
+            this.owncodeToolStripMenuItem2.Size = new System.Drawing.Size(242, 22);
+            this.owncodeToolStripMenuItem2.Text = "Szyfrowanie Własne";
+            // 
+            // questionMarkCodeToolStripMenuItem2
+            // 
+            this.questionMarkCodeToolStripMenuItem2.Name = "questionMarkCodeToolStripMenuItem2";
+            this.questionMarkCodeToolStripMenuItem2.Size = new System.Drawing.Size(181, 22);
+            this.questionMarkCodeToolStripMenuItem2.Text = "Question Mark code";
+            this.questionMarkCodeToolStripMenuItem2.Click += new System.EventHandler(this.questionMarkCodeToolStripMenuItem2_Click);
+            // 
+            // adixTablesToolStripMenuItem2
+            // 
+            this.adixTablesToolStripMenuItem2.Name = "adixTablesToolStripMenuItem2";
+            this.adixTablesToolStripMenuItem2.Size = new System.Drawing.Size(181, 22);
+            this.adixTablesToolStripMenuItem2.Text = "Adix Tables";
+            this.adixTablesToolStripMenuItem2.Click += new System.EventHandler(this.adixTablesToolStripMenuItem2_Click);
             // 
             // toolStripSeparator1
             // 
@@ -474,6 +526,7 @@
             this.toolStripSeparator9,
             this.toolStripSplitButton1,
             this.toolStripSplitButton2,
+            this.toolStripButton12,
             this.toolStripSeparator10,
             this.toolStripButton7,
             this.toolStripButton8,
@@ -481,7 +534,8 @@
             this.toolStripSeparator11,
             this.toolStripButton10,
             this.toolStripTextBox1,
-            this.toolStripButton11});
+            this.toolStripButton11,
+            this.toolStripButton13});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(977, 25);
@@ -705,6 +759,29 @@
             this.tripleDESToolStripMenuItem.Text = "TripleDES";
             this.tripleDESToolStripMenuItem.Click += new System.EventHandler(this.tripleDESToolStripMenuItem_Click);
             // 
+            // owncodeToolStripMenuItem
+            // 
+            this.owncodeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.questionMarkCodeToolStripMenuItem,
+            this.adixTablesToolStripMenuItem});
+            this.owncodeToolStripMenuItem.Name = "owncodeToolStripMenuItem";
+            this.owncodeToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.owncodeToolStripMenuItem.Text = "Szyfrowanie Własne";
+            // 
+            // questionMarkCodeToolStripMenuItem
+            // 
+            this.questionMarkCodeToolStripMenuItem.Name = "questionMarkCodeToolStripMenuItem";
+            this.questionMarkCodeToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.questionMarkCodeToolStripMenuItem.Text = "Question Mark code";
+            this.questionMarkCodeToolStripMenuItem.Click += new System.EventHandler(this.questionMarkCodeToolStripMenuItem_Click);
+            // 
+            // adixTablesToolStripMenuItem
+            // 
+            this.adixTablesToolStripMenuItem.Name = "adixTablesToolStripMenuItem";
+            this.adixTablesToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.adixTablesToolStripMenuItem.Text = "Adix Tables";
+            this.adixTablesToolStripMenuItem.Click += new System.EventHandler(this.adixTablesToolStripMenuItem_Click);
+            // 
             // toolStripSplitButton2
             // 
             this.toolStripSplitButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -755,6 +832,39 @@
             this.tripleDESToolStripMenuItem1.Size = new System.Drawing.Size(242, 22);
             this.tripleDESToolStripMenuItem1.Text = "TripleDES";
             this.tripleDESToolStripMenuItem1.Click += new System.EventHandler(this.tripleDESToolStripMenuItem1_Click);
+            // 
+            // owncodeToolStripMenuItem1
+            // 
+            this.owncodeToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.questionMarkCodeToolStripMenuItem1,
+            this.adixTablesToolStripMenuItem1});
+            this.owncodeToolStripMenuItem1.Name = "owncodeToolStripMenuItem1";
+            this.owncodeToolStripMenuItem1.Size = new System.Drawing.Size(242, 22);
+            this.owncodeToolStripMenuItem1.Text = "Szyfrowanie Własne";
+            // 
+            // questionMarkCodeToolStripMenuItem1
+            // 
+            this.questionMarkCodeToolStripMenuItem1.Name = "questionMarkCodeToolStripMenuItem1";
+            this.questionMarkCodeToolStripMenuItem1.Size = new System.Drawing.Size(181, 22);
+            this.questionMarkCodeToolStripMenuItem1.Text = "Question Mark code";
+            this.questionMarkCodeToolStripMenuItem1.Click += new System.EventHandler(this.questionMarkCodeToolStripMenuItem1_Click);
+            // 
+            // adixTablesToolStripMenuItem1
+            // 
+            this.adixTablesToolStripMenuItem1.Name = "adixTablesToolStripMenuItem1";
+            this.adixTablesToolStripMenuItem1.Size = new System.Drawing.Size(181, 22);
+            this.adixTablesToolStripMenuItem1.Text = "Adix Tables";
+            this.adixTablesToolStripMenuItem1.Click += new System.EventHandler(this.adixTablesToolStripMenuItem1_Click);
+            // 
+            // toolStripButton12
+            // 
+            this.toolStripButton12.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton12.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton12.Image")));
+            this.toolStripButton12.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton12.Name = "toolStripButton12";
+            this.toolStripButton12.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton12.Text = "Zamień";
+            this.toolStripButton12.Click += new System.EventHandler(this.toolStripButton12_Click);
             // 
             // toolStripSeparator10
             // 
@@ -824,6 +934,16 @@
             this.toolStripButton11.Text = "Resetuj Kolory";
             this.toolStripButton11.Click += new System.EventHandler(this.toolStripButton11_Click_1);
             // 
+            // toolStripButton13
+            // 
+            this.toolStripButton13.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton13.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton13.Image")));
+            this.toolStripButton13.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton13.Name = "toolStripButton13";
+            this.toolStripButton13.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton13.Text = "Zaawansowane wyszukiwanie (Regex)";
+            this.toolStripButton13.Click += new System.EventHandler(this.toolStripButton13_Click);
+            // 
             // richTextBox1
             // 
             this.richTextBox1.AutoWordSelection = true;
@@ -880,66 +1000,6 @@
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
-            // 
-            // owncodeToolStripMenuItem
-            // 
-            this.owncodeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.questionMarkCodeToolStripMenuItem});
-            this.owncodeToolStripMenuItem.Name = "owncodeToolStripMenuItem";
-            this.owncodeToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.owncodeToolStripMenuItem.Text = "Szyfrowanie Własne";
-            // 
-            // questionMarkCodeToolStripMenuItem
-            // 
-            this.questionMarkCodeToolStripMenuItem.Name = "questionMarkCodeToolStripMenuItem";
-            this.questionMarkCodeToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.questionMarkCodeToolStripMenuItem.Text = "Question Mark code";
-            this.questionMarkCodeToolStripMenuItem.Click += new System.EventHandler(this.questionMarkCodeToolStripMenuItem_Click);
-            // 
-            // owncodeToolStripMenuItem1
-            // 
-            this.owncodeToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.questionMarkCodeToolStripMenuItem1});
-            this.owncodeToolStripMenuItem1.Name = "owncodeToolStripMenuItem1";
-            this.owncodeToolStripMenuItem1.Size = new System.Drawing.Size(242, 22);
-            this.owncodeToolStripMenuItem1.Text = "Szyfrowanie Własne";
-            // 
-            // questionMarkCodeToolStripMenuItem1
-            // 
-            this.questionMarkCodeToolStripMenuItem1.Name = "questionMarkCodeToolStripMenuItem1";
-            this.questionMarkCodeToolStripMenuItem1.Size = new System.Drawing.Size(181, 22);
-            this.questionMarkCodeToolStripMenuItem1.Text = "Question Mark code";
-            this.questionMarkCodeToolStripMenuItem1.Click += new System.EventHandler(this.questionMarkCodeToolStripMenuItem1_Click);
-            // 
-            // owncodeToolStripMenuItem2
-            // 
-            this.owncodeToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.questionMarkCodeToolStripMenuItem2});
-            this.owncodeToolStripMenuItem2.Name = "owncodeToolStripMenuItem2";
-            this.owncodeToolStripMenuItem2.Size = new System.Drawing.Size(242, 22);
-            this.owncodeToolStripMenuItem2.Text = "Szyfrowanie Własne";
-            // 
-            // questionMarkCodeToolStripMenuItem2
-            // 
-            this.questionMarkCodeToolStripMenuItem2.Name = "questionMarkCodeToolStripMenuItem2";
-            this.questionMarkCodeToolStripMenuItem2.Size = new System.Drawing.Size(181, 22);
-            this.questionMarkCodeToolStripMenuItem2.Text = "Question Mark code";
-            this.questionMarkCodeToolStripMenuItem2.Click += new System.EventHandler(this.questionMarkCodeToolStripMenuItem2_Click);
-            // 
-            // owncodeToolStripMenuItem3
-            // 
-            this.owncodeToolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.questionMarkCodeToolStripMenuItem3});
-            this.owncodeToolStripMenuItem3.Name = "owncodeToolStripMenuItem3";
-            this.owncodeToolStripMenuItem3.Size = new System.Drawing.Size(242, 22);
-            this.owncodeToolStripMenuItem3.Text = "Szyfrowanie Własne";
-            // 
-            // questionMarkCodeToolStripMenuItem3
-            // 
-            this.questionMarkCodeToolStripMenuItem3.Name = "questionMarkCodeToolStripMenuItem3";
-            this.questionMarkCodeToolStripMenuItem3.Size = new System.Drawing.Size(181, 22);
-            this.questionMarkCodeToolStripMenuItem3.Text = "Question Mark code";
-            this.questionMarkCodeToolStripMenuItem3.Click += new System.EventHandler(this.questionMarkCodeToolStripMenuItem3_Click);
             // 
             // MainWindow
             // 
@@ -1063,6 +1123,12 @@
         private System.Windows.Forms.ToolStripMenuItem questionMarkCodeToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem owncodeToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem questionMarkCodeToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem adixTablesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adixTablesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem adixTablesToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem adixTablesToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripButton toolStripButton12;
+        private System.Windows.Forms.ToolStripButton toolStripButton13;
     }
 }
 
